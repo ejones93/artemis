@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
     redirect_to root_url and return unless @user.activated?
   end
   
@@ -34,12 +35,21 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+<<<<<<< HEAD
 	if @user.update(user_params)
     flash[:success] = "Profile updated"
 	  redirect_to @user
 	else
 	  render 'edit'
 	end
+=======
+    if @user.update(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+>>>>>>> user-microposts
   end
   
   def destroy
@@ -54,6 +64,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
     
+<<<<<<< HEAD
 	# Before filters
 	
 	# Confirms a logged in user.
@@ -64,16 +75,19 @@ class UsersController < ApplicationController
       redirect_to login_url
 	  end
 	end
+=======
+    # Before filters
+>>>>>>> user-microposts
 	
-	# Confirms the correct user.
-	def correct_user
-	  @user = User.find(params[:id])
-	  redirect_to(root_url) unless current_user?(@user)
-	end
+    # Confirms the correct user.
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
 	
-	# Confirms and admin user/
-	def admin_user
-	  redirect_to(root_url) unless current_user.admin?
-	end
+    # Confirms and admin user/
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
   #end of private
 end
