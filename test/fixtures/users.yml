@@ -28,3 +28,10 @@ user_<%= n %>:
   activated: true
   activated_at: <%= Time.zone.now %>
 <% end %>
+
+noposts:
+  name: No Microposts
+  email: nopost@example.com
+  password_digest: <%= User.digest('password') %>
+  admin: false
+  activated: true
