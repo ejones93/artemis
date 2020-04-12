@@ -35,21 +35,12 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-<<<<<<< HEAD
-	if @user.update(user_params)
-    flash[:success] = "Profile updated"
-	  redirect_to @user
-	else
-	  render 'edit'
-	end
-=======
     if @user.update(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
     else
       render 'edit'
     end
->>>>>>> user-microposts
   end
   
   def destroy
@@ -64,21 +55,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
     
-<<<<<<< HEAD
-	# Before filters
-	
-	# Confirms a logged in user.
-	def logged_in_user
-	  unless logged_in?
-	    store_location
-	    flash[:danger] = "Please log in."
-      redirect_to login_url
-	  end
-	end
-=======
-    # Before filters
->>>>>>> user-microposts
-	
+    # Before filters	
     # Confirms the correct user.
     def correct_user
       @user = User.find(params[:id])
