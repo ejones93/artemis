@@ -1,0 +1,3 @@
+module RelationshipsHelper
+  # Blah
+end

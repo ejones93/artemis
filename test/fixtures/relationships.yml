@@ -1,1 +1,15 @@
-# empty
+one:
+  follower: emlyn
+  followed: test
+
+two:
+  follower: emlyn
+  followed: noposts
+
+three:
+  follower: test
+  followed: emlyn
+
+four:
+  follower: user_1
+  followed: emlyn
