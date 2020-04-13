@@ -44,3 +44,8 @@ van:
   content: "Dude, this van's, like, rolling probable cause."
   created_at: <%= 4.hours.ago %>
   user: inactive
+  
+van:
+  content: "blah blah blah... blah blah... blah..."
+  created_at: <%= 4.hours.ago %>
+  user: user_5
