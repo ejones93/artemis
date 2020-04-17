@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_165506) do
+ActiveRecord::Schema.define(version: 2020_04_17_074517) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,27 @@ ActiveRecord::Schema.define(version: 2020_04_12_165506) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "bowtype"
+    t.string "gender"
+    t.integer "age"
+    t.integer "gmb_hc"
+    t.integer "mb_hc"
+    t.integer "bowman_hc"
+    t.integer "first_hc"
+    t.integer "second_hc"
+    t.integer "third_hc"
+  end
+
+  create_table "handicaps", force: :cascade do |t|
+    t.integer "round_id", null: false
+    t.integer "value"
+    t.integer "score"
+    t.string "round_name"
+    t.index ["round_id", "value"], name: "index_handicaps_on_round_id_and_value"
+    t.index ["round_id"], name: "index_handicaps_on_round_id"
+  end
+
   create_table "microposts", force: :cascade do |t|
     t.text "content"
     t.integer "user_id", null: false
@@ -52,6 +73,35 @@ ActiveRecord::Schema.define(version: 2020_04_12_165506) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "rounds", force: :cascade do |t|
+    t.string "name"
+    t.boolean "indoor", default: false
+    t.string "organisation"
+    t.integer "max_hits"
+    t.integer "max_score"
+    t.integer "arrows_per_end"
+    t.string "distance_1"
+    t.integer "face_1"
+    t.integer "ends_1"
+    t.string "distance_2"
+    t.integer "face_2"
+    t.integer "ends_2"
+    t.string "distance_3"
+    t.integer "face_3"
+    t.integer "ends_3"
+    t.string "distance_4"
+    t.integer "face_4"
+    t.integer "ends_4"
+    t.text "notes"
+    t.string "gmb_achievable", default: "0"
+    t.string "mb_achievable", default: "0"
+    t.string "bowman_achievable", default: "0"
+    t.string "first_achievable", default: "0"
+    t.string "second_achievable", default: "0"
+    t.string "third_achievable", default: "0"
+    t.string "bowstyle"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -69,5 +119,6 @@ ActiveRecord::Schema.define(version: 2020_04_12_165506) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "handicaps", "rounds"
   add_foreign_key "microposts", "users"
 end

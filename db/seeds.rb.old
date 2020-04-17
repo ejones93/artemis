@@ -1,0 +1,1640 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
+# Create a main sample user.
+User.create!(name:  "Example User", 
+			 email: "example@railstutorial.org", 
+			 password: "foobar", 
+			 password_confirmation: "foobar", 
+			 admin: true,
+			 activated: true,
+			 activated_at: Time.zone.now)
+
+# Generate a bunch of additional users.
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  User.create!(name:  name, 
+			   email: email, 
+			   password: password, 
+			   password_confirmation: password,
+			   activated: true,
+			   activated_at: Time.zone.now)
+end
+
+# Create Categories
+# Senior Gents Barebow
+Category.create!(bowtype: "Barebow",
+                 gender: "M",
+                 age: 19,
+                 gmb_hc: 40,
+                 mb_hc: 45,
+                 bowman_hc: 49,
+                 first_hc: 56,
+                 second_hc: 64,
+                 third_hc: 71)
+
+# < 18 Gents Barebow                 
+Category.create!(bowtype: "Barebow",
+                 gender: "M",
+                 age: 17,
+                 gmb_hc: 40,
+                 mb_hc: 50,
+                 bowman_hc: 57,
+                 first_hc: 62,
+                 second_hc: 68,
+                 third_hc: 73)
+
+# < 16 Gents Barebow                 
+Category.create!(bowtype: "Barebow",
+                 gender: "M",
+                 age: 15,
+                 gmb_hc: 40,
+                 mb_hc: 53,
+                 bowman_hc: 60,
+                 first_hc: 65,
+                 second_hc: 70,
+                 third_hc: 75)
+                 
+# < 14 Gents Barebow                 
+Category.create!(bowtype: "Barebow",
+                 gender: "M",
+                 age: 13,
+                 gmb_hc: 40,
+                 mb_hc: 60,
+                 bowman_hc: 67,
+                 first_hc: 72,
+                 second_hc: 77,
+                 third_hc: 83)
+                 
+# < 12 Gents Barebow                 
+Category.create!(bowtype: "Barebow",
+                 gender: "M",
+                 age: 11,
+                 gmb_hc: 40,
+                 mb_hc: 69,
+                 bowman_hc: 75,
+                 first_hc: 81,
+                 second_hc: 88,
+                 third_hc: 95)
+                 
+# Senior Ladies Barebow
+Category.create!(bowtype: "Barebow",
+                 gender: "F",
+                 age: 19,
+                 gmb_hc: 49,
+                 mb_hc: 51,
+                 bowman_hc: 57,
+                 first_hc: 64,
+                 second_hc: 71,
+                 third_hc: 78)
+
+# < 18 Ladies Barebow                 
+Category.create!(bowtype: "Barebow",
+                 gender: "F",
+                 age: 17,
+                 gmb_hc: 49,
+                 mb_hc: 54,
+                 bowman_hc: 59,
+                 first_hc: 64,
+                 second_hc: 69,
+                 third_hc: 73)
+
+# < 16 Ladies Barebow                 
+Category.create!(bowtype: "Barebow",
+                 gender: "F",
+                 age: 15,
+                 gmb_hc: 49,
+                 mb_hc: 59,
+                 bowman_hc: 65,
+                 first_hc: 70,
+                 second_hc: 74,
+                 third_hc: 79)
+                 
+# < 14 Ladies Barebow                 
+Category.create!(bowtype: "Barebow",
+                 gender: "F",
+                 age: 13,
+                 gmb_hc: 49,
+                 mb_hc: 67,
+                 bowman_hc: 72,
+                 first_hc: 77,
+                 second_hc: 83,
+                 third_hc: 90)
+                 
+# < 12 Ladies Barebow                 
+Category.create!(bowtype: "Barebow",
+                 gender: "F",
+                 age: 11,
+                 gmb_hc: 49,
+                 mb_hc: 73,
+                 bowman_hc: 78,
+                 first_hc: 84,
+                 second_hc: 90,
+                 third_hc: 95)
+                 
+# Senior Gents Compound
+Category.create!(bowtype: "Compound",
+                 gender: "M",
+                 age: 19,
+                 gmb_hc: 10,
+                 mb_hc: 16,
+                 bowman_hc: 23,
+                 first_hc: 32,
+                 second_hc: 38,
+                 third_hc: 48)
+
+# < 18 Gents Compound                 
+Category.create!(bowtype: "Compound",
+                 gender: "M",
+                 age: 17,
+                 gmb_hc: 10,
+                 mb_hc: 23,
+                 bowman_hc: 32,
+                 first_hc: 38,
+                 second_hc: 48,
+                 third_hc: 56)
+
+# < 16 Gents Compound                 
+Category.create!(bowtype: "Compound",
+                 gender: "M",
+                 age: 15,
+                 gmb_hc: 10,
+                 mb_hc: 32,
+                 bowman_hc: 38,
+                 first_hc: 48,
+                 second_hc: 56,
+                 third_hc: 61)
+                 
+# < 14 Gents Compound                 
+Category.create!(bowtype: "Compound",
+                 gender: "M",
+                 age: 13,
+                 gmb_hc: 10,
+                 mb_hc: 38,
+                 bowman_hc: 48,
+                 first_hc: 56,
+                 second_hc: 61,
+                 third_hc: 69)
+                 
+# < 12 Gents Compound                 
+Category.create!(bowtype: "Compound",
+                 gender: "M",
+                 age: 11,
+                 gmb_hc: 10,
+                 mb_hc: 48,
+                 bowman_hc: 56,
+                 first_hc: 61,
+                 second_hc: 71,
+                 third_hc: 79)
+                 
+# Senior Ladies Compound
+Category.create!(bowtype: "Compound",
+                 gender: "F",
+                 age: 19,
+                 gmb_hc: 15,
+                 mb_hc: 21,
+                 bowman_hc: 29,
+                 first_hc: 38,
+                 second_hc: 49,
+                 third_hc: 56)
+
+# < 18 Ladies Compound                 
+Category.create!(bowtype: "Compound",
+                 gender: "F",
+                 age: 17,
+                 gmb_hc: 15,
+                 mb_hc: 29,
+                 bowman_hc: 38,
+                 first_hc: 49,
+                 second_hc: 56,
+                 third_hc: 66)
+
+# < 16 Ladies Compound                 
+Category.create!(bowtype: "Compound",
+                 gender: "F",
+                 age: 15,
+                 gmb_hc: 15,
+                 mb_hc: 38,
+                 bowman_hc: 49,
+                 first_hc: 56,
+                 second_hc: 66,
+                 third_hc: 74)
+                 
+# < 14 Ladies Compound                 
+Category.create!(bowtype: "Compound",
+                 gender: "F",
+                 age: 13,
+                 gmb_hc: 15,
+                 mb_hc: 46,
+                 bowman_hc: 55,
+                 first_hc: 65,
+                 second_hc: 75,
+                 third_hc: 84)
+                 
+# < 12 Ladies Compound                 
+Category.create!(bowtype: "Compound",
+                 gender: "F",
+                 age: 11,
+                 gmb_hc: 15,
+                 mb_hc: 54,
+                 bowman_hc: 63,
+                 first_hc: 73,
+                 second_hc: 83,
+                 third_hc: 91)
+                     
+# Senior Gents Longbow
+Category.create!(bowtype: "Longbow",
+                 gender: "M",
+                 age: 19,
+                 gmb_hc: 52,
+                 mb_hc: 55,
+                 bowman_hc: 60,
+                 first_hc: 65,
+                 second_hc: 69,
+                 third_hc: 74)
+
+# < 18 Gents Longbow                 
+Category.create!(bowtype: "Longbow",
+                 gender: "M",
+                 age: 17,
+                 gmb_hc: 52,
+                 mb_hc: 56,
+                 bowman_hc: 62,
+                 first_hc: 67,
+                 second_hc: 73,
+                 third_hc: 79)
+
+# < 16 Gents Longbow                 
+Category.create!(bowtype: "Longbow",
+                 gender: "M",
+                 age: 15,
+                 gmb_hc: 52,
+                 mb_hc: 60,
+                 bowman_hc: 65,
+                 first_hc: 70,
+                 second_hc: 75,
+                 third_hc: 81)
+                 
+# < 14 Gents Longbow                 
+Category.create!(bowtype: "Longbow",
+                 gender: "M",
+                 age: 13,
+                 gmb_hc: 52,
+                 mb_hc: 66,
+                 bowman_hc: 72,
+                 first_hc: 77,
+                 second_hc: 82,
+                 third_hc: 87)
+                 
+# < 12 Gents Longbow                 
+Category.create!(bowtype: "Longbow",
+                 gender: "M",
+                 age: 11,
+                 gmb_hc: 52,
+                 mb_hc: 75,
+                 bowman_hc: 81,
+                 first_hc: 87,
+                 second_hc: 93,
+                 third_hc: 99)
+                 
+# Senior Ladies Longbow
+Category.create!(bowtype: "Longbow",
+                 gender: "F",
+                 age: 19,
+                 gmb_hc: 59,
+                 mb_hc: 62,
+                 bowman_hc: 65,
+                 first_hc: 70,
+                 second_hc: 73,
+                 third_hc: 82)
+
+# < 18 Ladies Longbow                 
+Category.create!(bowtype: "Longbow",
+                 gender: "F",
+                 age: 17,
+                 gmb_hc: 59,
+                 mb_hc: 61,
+                 bowman_hc: 64,
+                 first_hc: 68,
+                 second_hc: 73,
+                 third_hc: 77)
+
+# < 16 Ladies Longbow                 
+Category.create!(bowtype: "Longbow",
+                 gender: "F",
+                 age: 15,
+                 gmb_hc: 59,
+                 mb_hc: 66,
+                 bowman_hc: 70,
+                 first_hc: 74,
+                 second_hc: 78,
+                 third_hc: 83)
+                 
+# < 14 Ladies Longbow                 
+Category.create!(bowtype: "Longbow",
+                 gender: "F",
+                 age: 13,
+                 gmb_hc: 59,
+                 mb_hc: 72,
+                 bowman_hc: 77,
+                 first_hc: 82,
+                 second_hc: 87,
+                 third_hc: 95)
+                 
+# < 12 Ladies Longbow                 
+Category.create!(bowtype: "Longbow",
+                 gender: "F",
+                 age: 11,
+                 gmb_hc: 59,
+                 mb_hc: 78,
+                 bowman_hc: 83,
+                 first_hc: 88,
+                 second_hc: 94,
+                 third_hc: 99)
+                     
+# Senior Gents Recurve
+Category.create!(bowtype: "Recurve",
+                 gender: "M",
+                 age: 19,
+                 gmb_hc: 22,
+                 mb_hc: 28,
+                 bowman_hc: 36,
+                 first_hc: 44,
+                 second_hc: 50,
+                 third_hc: 58)
+
+# < 18 Gents Recurve                 
+Category.create!(bowtype: "Recurve",
+                 gender: "M",
+                 age: 17,
+                 gmb_hc: 22,
+                 mb_hc: 31,
+                 bowman_hc: 39,
+                 first_hc: 50,
+                 second_hc: 58,
+                 third_hc: 68)
+
+# < 16 Gents Recurve                 
+Category.create!(bowtype: "Recurve",
+                 gender: "M",
+                 age: 15,
+                 gmb_hc: 22,
+                 mb_hc: 40,
+                 bowman_hc: 48,
+                 first_hc: 56,
+                 second_hc: 62,
+                 third_hc: 71)
+                 
+# < 14 Gents Recurve                 
+Category.create!(bowtype: "Recurve",
+                 gender: "M",
+                 age: 13,
+                 gmb_hc: 22,
+                 mb_hc: 50,
+                 bowman_hc: 58,
+                 first_hc: 66,
+                 second_hc: 71,
+                 third_hc: 79)
+                 
+# < 12 Gents Recurve                 
+Category.create!(bowtype: "Recurve",
+                 gender: "M",
+                 age: 11,
+                 gmb_hc: 22,
+                 mb_hc: 61,
+                 bowman_hc: 69,
+                 first_hc: 77,
+                 second_hc: 83,
+                 third_hc: 92)
+                 
+# Senior Ladies Recurve
+Category.create!(bowtype: "Recurve",
+                 gender: "F",
+                 age: 19,
+                 gmb_hc: 27,
+                 mb_hc: 33,
+                 bowman_hc: 41,
+                 first_hc: 50,
+                 second_hc: 57,
+                 third_hc: 65)
+
+# < 18 Ladies Recurve                 
+Category.create!(bowtype: "Recurve",
+                 gender: "F",
+                 age: 17,
+                 gmb_hc: 27,
+                 mb_hc: 41,
+                 bowman_hc: 48,
+                 first_hc: 57,
+                 second_hc: 64,
+                 third_hc: 70)
+
+# < 16 Ladies Recurve                 
+Category.create!(bowtype: "Recurve",
+                 gender: "F",
+                 age: 15,
+                 gmb_hc: 27,
+                 mb_hc: 50,
+                 bowman_hc: 58,
+                 first_hc: 66,
+                 second_hc: 72,
+                 third_hc: 76)
+                 
+# < 14 Ladies Recurve                 
+Category.create!(bowtype: "Recurve",
+                 gender: "F",
+                 age: 13,
+                 gmb_hc: 27,
+                 mb_hc: 56,
+                 bowman_hc: 64,
+                 first_hc: 73,
+                 second_hc: 80,
+                 third_hc: 87)
+                 
+# < 12 Ladies Recurve                 
+Category.create!(bowtype: "Recurve",
+                 gender: "F",
+                 age: 11,
+                 gmb_hc: 27,
+                 mb_hc: 65,
+                 bowman_hc: 70,
+                 first_hc: 78,
+                 second_hc: 87,
+                 third_hc: 93)
+                 
+# Create rounds 
+# WA outdoor
+Round.create!(name: "WA 1440 (Gentlemen)",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 144,
+              max_score: 1440,
+              arrows_per_end: 6,
+              distance_1: "90m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "70m",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "50m",
+              face_3: 80,
+              ends_3: 6,
+              distance_4: "30m",
+              face_4: 80,
+              ends_4: 6)
+
+Round.create!(name: "WA 1440 (Ladies)",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 144,
+              max_score: 1440,
+              arrows_per_end: 6,
+              distance_1: "70m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "60m",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "50m",
+              face_3: 80,
+              ends_3: 6,
+              distance_4: "30m",
+              face_4: 80,
+              ends_4: 6)
+
+Round.create!(name: "Metric 1",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 144,
+              max_score: 1440,
+              arrows_per_end: 6,
+              distance_1: "70m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "60m",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "50m",
+              face_3: 80,
+              ends_3: 6,
+              distance_4: "30m",
+              face_4: 80,
+              ends_4: 6)
+
+Round.create!(name: "Metric 2",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 144,
+              max_score: 1440,
+              arrows_per_end: 6,
+              distance_1: "60m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "50m",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "40m",
+              face_3: 80,
+              ends_3: 6,
+              distance_4: "30m",
+              face_4: 80,
+              ends_4: 6)
+
+Round.create!(name: "Metric 3",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 144,
+              max_score: 1440,
+              arrows_per_end: 6,
+              distance_1: "50m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "40m",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "30m",
+              face_3: 80,
+              ends_3: 6,
+              distance_4: "20m",
+              face_4: 80,
+              ends_4: 6)
+
+Round.create!(name: "Metric 4",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 144,
+              max_score: 1440,
+              arrows_per_end: 6,
+              distance_1: "40m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "30m",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "20m",
+              face_3: 80,
+              ends_3: 6,
+              distance_4: "10m",
+              face_4: 80,
+              ends_4: 6)
+
+Round.create!(name: "Metric 5",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 144,
+              max_score: 1440,
+              arrows_per_end: 6,
+              distance_1: "30m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "20m",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "15m",
+              face_3: 80,
+              ends_3: 6,
+              distance_4: "10m",
+              face_4: 80,
+              ends_4: 6)
+
+Round.create!(name: "Long Metric (Gentlemen)",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "90m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "70m",
+              face_2: 122,
+              ends_2: 6)
+
+Round.create!(name: "Long Metric (Ladies)",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "70m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "60m",
+              face_2: 122,
+              ends_2: 6)
+
+Round.create!(name: "Long Metric 1",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "70m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "60m",
+              face_2: 122,
+              ends_2: 6)
+
+Round.create!(name: "Long Metric 2",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "60m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "50m",
+              face_2: 122,
+              ends_2: 6)
+
+Round.create!(name: "Long Metric 3",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "50m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "40m",
+              face_2: 122,
+              ends_2: 6)
+
+Round.create!(name: "Long Metric 4",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "40m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "30m",
+              face_2: 122,
+              ends_2: 6)
+
+Round.create!(name: "Long Metric 5",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "30m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "20m",
+              face_2: 122,
+              ends_2: 6)
+
+Round.create!(name: "Short Metric 1",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "50m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "30m",
+              face_2: 122,
+              ends_2: 6)
+
+Round.create!(name: "Short Metric 2",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "40m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "30m",
+              face_2: 122,
+              ends_2: 6)
+
+Round.create!(name: "Short Metric 3",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "30m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "20m",
+              face_2: 122,
+              ends_2: 6)
+
+Round.create!(name: "Short Metric 4",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "20m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "10m",
+              face_2: 122,
+              ends_2: 6)
+
+Round.create!(name: "Short Metric 5",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "15m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "10m",
+              face_2: 122,
+              ends_2: 6)
+              
+Round.create!(name: "Half WA (Gentlemen)",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "90m",
+              face_1: 122,
+              ends_1: 3,
+              distance_2: "70m",
+              face_2: 122,
+              ends_2: 3,
+              distance_3: "50m",
+              face_3: 80,
+              ends_3: 3,
+              distance_4: "30m",
+              face_4: 80,
+              ends_4: 3)
+
+Round.create!(name: "Half WA (Ladies)",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "70m",
+              face_1: 122,
+              ends_1: 3,
+              distance_2: "60m",
+              face_2: 122,
+              ends_2: 3,
+              distance_3: "50m",
+              face_3: 80,
+              ends_3: 3,
+              distance_4: "30m",
+              face_4: 80,
+              ends_4: 3)
+
+Round.create!(name: "Half Metric 1",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "70m",
+              face_1: 122,
+              ends_1: 3,
+              distance_2: "60m",
+              face_2: 122,
+              ends_2: 3,
+              distance_3: "50m",
+              face_3: 80,
+              ends_3: 3,
+              distance_4: "30m",
+              face_4: 80,
+              ends_4: 3)
+
+Round.create!(name: "Half Metric 2",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "60m",
+              face_1: 122,
+              ends_1: 3,
+              distance_2: "50m",
+              face_2: 122,
+              ends_2: 3,
+              distance_3: "40m",
+              face_3: 80,
+              ends_3: 3,
+              distance_4: "30m",
+              face_4: 80,
+              ends_4: 3)
+
+Round.create!(name: "Half Metric 3",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "50m",
+              face_1: 122,
+              ends_1: 3,
+              distance_2: "40m",
+              face_2: 122,
+              ends_2: 3,
+              distance_3: "30m",
+              face_3: 80,
+              ends_3: 3,
+              distance_4: "20m",
+              face_4: 80,
+              ends_4: 3)
+
+Round.create!(name: "Half Metric 4",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "40m",
+              face_1: 122,
+              ends_1: 3,
+              distance_2: "30m",
+              face_2: 122,
+              ends_2: 3,
+              distance_3: "20m",
+              face_3: 80,
+              ends_3: 3,
+              distance_4: "10m",
+              face_4: 80,
+              ends_4: 3)
+
+Round.create!(name: "Half Metric 5",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "30m",
+              face_1: 122,
+              ends_1: 3,
+              distance_2: "20m",
+              face_2: 122,
+              ends_2: 3,
+              distance_3: "15m",
+              face_3: 80,
+              ends_3: 3,
+              distance_4: "10m",
+              face_4: 80,
+              ends_4: 3)
+
+Round.create!(name: "WA 900",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 90,
+              max_score: 900,
+              arrows_per_end: 6,
+              distance_1: "60m",
+              face_1: 122,
+              ends_1: 5,
+              distance_2: "50m",
+              face_2: 122,
+              ends_2: 5,
+              distance_3: "40m",
+              face_3: 122,
+              ends_3: 5)
+
+Round.create!(name: "WA 70m",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "70m",
+              face_1: 122,
+              ends_1: 12)
+
+Round.create!(name: "WA 60m",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "60m",
+              face_1: 122,
+              ends_1: 12)
+
+Round.create!(name: "WA 50m",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "50m",
+              face_1: 80,
+              ends_1: 12)
+
+Round.create!(name: "Half WA 1",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "70m",
+              face_1: 122,
+              ends_1: 3,
+              distance_2: "60m",
+              face_2: 122,
+              ends_2: 3,
+              distance_3: "50m",
+              face_3: 80,
+              ends_3: 3,
+              distance_4: "30m",
+              face_4: 80,
+              ends_4: 3)
+              
+Round.create!(name: "WA Standard",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 72,
+              max_score: 720,
+              arrows_per_end: 6,
+              distance_1: "50m",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "30m",
+              face_2: 122,
+              ends_2: 6)
+              
+Round.create!(name: "Frostbite",
+              indoor: false,
+              organisation: "World Archery",
+              max_hits: 36,
+              max_score: 360,
+              arrows_per_end: 6,
+              distance_1: "30m",
+              face_1: 80,
+              ends_1: 6)
+
+
+# World Archery indoor
+Round.create!(name: "WA 18m",
+              indoor: true,
+              organisation: "World Archery",
+              max_hits: 60,
+              max_score: 600,
+              arrows_per_end: 3,
+              distance_1: "18m",
+              face_1: 40,
+              ends_1: 20)
+ 
+Round.create!(name: "WA 25m",
+              indoor: true,
+              organisation: "World Archery",
+              max_hits: 60,
+              max_score: 600,
+              arrows_per_end: 3,
+              distance_1: "25m",
+              face_1: 60,
+              ends_1: 20)
+ 
+Round.create!(name: "WA Combined",
+              indoor: true,
+              organisation: "World Archery",
+              max_hits: 120,
+              max_score: 1200,
+              arrows_per_end: 3,
+              distance_1: "25m",
+              face_1: 60,
+              ends_1: 20,
+              distance_2: "18m",
+              face_2: 40,
+              ends_2: 20)
+ 
+Round.create!(name: "Stafford",
+              indoor: true,
+              organisation: "World Archery",
+              max_hits: 60,
+              max_score: 600,
+              arrows_per_end: 3,
+              distance_1: "30m",
+              face_1: 80,
+              ends_1: 20)
+ 
+Round.create!(name: "Vegas",
+              indoor: true,
+              organisation: "World Archery",
+              max_hits: 60,
+              max_score: 600,
+              arrows_per_end: 3,
+              distance_1: "18m",
+              face_1: 40,
+              ends_1: 20,
+              notes: "3 spot only")
+ 
+# Archery GB outdoor
+Round.create!(name: "York",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 144,
+              max_score: 1296,
+              arrows_per_end: 6,
+              distance_1: "100yds",
+              face_1: 122,
+              ends_1: 12,
+              distance_2: "80yds",
+              face_2: 122,
+              ends_2: 8,
+              distance_3: "60yds",
+              face_3: 122,
+              ends_3: 4)
+              
+Round.create!(name: "Hereford",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 144,
+              max_score: 1296,
+              arrows_per_end: 6,
+              distance_1: "80yds",
+              face_1: 122,
+              ends_1: 12,
+              distance_2: "60yds",
+              face_2: 122,
+              ends_2: 8,
+              distance_3: "50yds",
+              face_3: 122,
+              ends_3: 4)
+              
+Round.create!(name: "Bristol 1",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 144,
+              max_score: 1296,
+              arrows_per_end: 6,
+              distance_1: "80yds",
+              face_1: 122,
+              ends_1: 12,
+              distance_2: "60yds",
+              face_2: 122,
+              ends_2: 8,
+              distance_3: "50yds",
+              face_3: 122,
+              ends_3: 4)
+              
+Round.create!(name: "Bristol 2",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 144,
+              max_score: 1296,
+              arrows_per_end: 6,
+              distance_1: "60yds",
+              face_1: 122,
+              ends_1: 12,
+              distance_2: "50yds",
+              face_2: 122,
+              ends_2: 8,
+              distance_3: "40yds",
+              face_3: 122,
+              ends_3: 4)
+  
+Round.create!(name: "Bristol 3",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 144,
+              max_score: 1296,
+              arrows_per_end: 6,
+              distance_1: "50yds",
+              face_1: 122,
+              ends_1: 12,
+              distance_2: "40yds",
+              face_2: 122,
+              ends_2: 8,
+              distance_3: "30yds",
+              face_3: 122,
+              ends_3: 4)
+
+Round.create!(name: "Bristol 4",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 144,
+              max_score: 1296,
+              arrows_per_end: 6,
+              distance_1: "40yds",
+              face_1: 122,
+              ends_1: 12,
+              distance_2: "30yds",
+              face_2: 122,
+              ends_2: 8,
+              distance_3: "20yds",
+              face_3: 122,
+              ends_3: 4)
+
+Round.create!(name: "Bristol 5",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 144,
+              max_score: 1296,
+              arrows_per_end: 6,
+              distance_1: "30yds",
+              face_1: 122,
+              ends_1: 12,
+              distance_2: "20yds",
+              face_2: 122,
+              ends_2: 8,
+              distance_3: "10yds",
+              face_3: 122,
+              ends_3: 4)
+
+Round.create!(name: "New National",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 72,
+              max_score: 648,
+              arrows_per_end: 6,
+              distance_1: "100yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "80yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "Long National",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 72,
+              max_score: 648,
+              arrows_per_end: 6,
+              distance_1: "80yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "60yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "National",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 72,
+              max_score: 648,
+              arrows_per_end: 6,
+              distance_1: "60yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "50yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "Short National",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 72,
+              max_score: 648,
+              arrows_per_end: 6,
+              distance_1: "50yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "40yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "Junior National",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 72,
+              max_score: 648,
+              arrows_per_end: 6,
+              distance_1: "40yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "30yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "Short Junior National",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 72,
+              max_score: 648,
+              arrows_per_end: 6,
+              distance_1: "30yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "20yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "New Warwick",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 48,
+              max_score: 432,
+              arrows_per_end: 6,
+              distance_1: "100yds",
+              face_1: 122,
+              ends_1: 4,
+              distance_2: "80yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "Long Warwick",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 48,
+              max_score: 432,
+              arrows_per_end: 6,
+              distance_1: "80yds",
+              face_1: 122,
+              ends_1: 4,
+              distance_2: "60yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "Warwick",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 48,
+              max_score: 432,
+              arrows_per_end: 6,
+              distance_1: "60yds",
+              face_1: 122,
+              ends_1: 4,
+              distance_2: "50yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "Short Warwick",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 48,
+              max_score: 432,
+              arrows_per_end: 6,
+              distance_1: "50yds",
+              face_1: 122,
+              ends_1: 4,
+              distance_2: "40yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "Junior Warwick",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 48,
+              max_score: 432,
+              arrows_per_end: 6,
+              distance_1: "40yds",
+              face_1: 122,
+              ends_1: 4,
+              distance_2: "30yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "Short Junior Warwick",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 48,
+              max_score: 432,
+              arrows_per_end: 6,
+              distance_1: "30yds",
+              face_1: 122,
+              ends_1: 4,
+              distance_2: "20yds",
+              face_2: 122,
+              ends_2: 4)
+              
+Round.create!(name: "New Western",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 96,
+              max_score: 864,
+              arrows_per_end: 6,
+              distance_1: "100yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "80yds",
+              face_2: 122,
+              ends_2: 8)
+              
+Round.create!(name: "Long Western",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 96,
+              max_score: 864,
+              arrows_per_end: 6,
+              distance_1: "80yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "60yds",
+              face_2: 122,
+              ends_2: 8)    
+              
+Round.create!(name: "Western",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 96,
+              max_score: 864,
+              arrows_per_end: 6,
+              distance_1: "60yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "50yds",
+              face_2: 122,
+              ends_2: 8)
+              
+Round.create!(name: "Short Western",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 96,
+              max_score: 864,
+              arrows_per_end: 6,
+              distance_1: "50yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "40yds",
+              face_2: 122,
+              ends_2: 8)
+
+Round.create!(name: "Junior Western",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 96,
+              max_score: 864,
+              arrows_per_end: 6,
+              distance_1: "40yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "30yds",
+              face_2: 122,
+              ends_2: 8)
+
+Round.create!(name: "Short Junior Western",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 96,
+              max_score: 864,
+              arrows_per_end: 6,
+              distance_1: "30yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "20yds",
+              face_2: 122,
+              ends_2: 8)
+
+Round.create!(name: "St George",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 108,
+              max_score: 972,
+              arrows_per_end: 6,
+              distance_1: "100yds",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "80yds",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "60yds",
+              face_3: 122,
+              ends_3: 6)
+
+Round.create!(name: "Albion",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 108,
+              max_score: 972,
+              arrows_per_end: 6,
+              distance_1: "80yds",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "60yds",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "50yds",
+              face_3: 122,
+              ends_3: 6)
+
+Round.create!(name: "Windsor",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 108,
+              max_score: 972,
+              arrows_per_end: 6,
+              distance_1: "60yds",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "50yds",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "40yds",
+              face_3: 122,
+              ends_3: 6)
+
+Round.create!(name: "Short Windsor",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 108,
+              max_score: 972,
+              arrows_per_end: 6,
+              distance_1: "50yds",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "40yds",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "30yds",
+              face_3: 122,
+              ends_3: 6)
+
+Round.create!(name: "Junior Windsor",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 108,
+              max_score: 972,
+              arrows_per_end: 6,
+              distance_1: "40yds",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "30yds",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "20yds",
+              face_3: 122,
+              ends_3: 6)
+
+Round.create!(name: "Short Junior Windsor",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 108,
+              max_score: 972,
+              arrows_per_end: 6,
+              distance_1: "30yds",
+              face_1: 122,
+              ends_1: 6,
+              distance_2: "20yds",
+              face_2: 122,
+              ends_2: 6,
+              distance_3: "10yds",
+              face_3: 122,
+              ends_3: 6)
+
+Round.create!(name: "American",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 90,
+              max_score: 810,
+              arrows_per_end: 6,
+              distance_1: "30yds",
+              face_1: 122,
+              ends_1: 5,
+              distance_2: "20yds",
+              face_2: 122,
+              ends_2: 5,
+              distance_3: "10yds",
+              face_3: 122,
+              ends_3: 5)
+
+Round.create!(name: "St Nicholas",
+              indoor: false,
+              organisation: "Archery GB",
+              max_hits: 84,
+              max_score: 756,
+              arrows_per_end: 6,
+              distance_1: "30yds",
+              face_1: 122,
+              ends_1: 8,
+              distance_2: "20yds",
+              face_2: 122,
+              ends_2: 4)
+
+# Archery GB indoor              
+Round.create!(name: "Portsmouth",
+              indoor: true,
+              organisation: "Archery GB",
+              max_hits: 60,
+              max_score: 600,
+              arrows_per_end: 3,
+              distance_1: "20yds",
+              face_1: 60,
+              ends_1: 20)
+              
+Round.create!(name: "Bray I",
+              indoor: true,
+              organisation: "Archery GB",
+              max_hits: 30,
+              max_score: 300,
+              arrows_per_end: 3,
+              distance_1: "20yds",
+              face_1: 40,
+              ends_1: 10)
+              
+Round.create!(name: "Bray II",
+              indoor: true,
+              organisation: "Archery GB",
+              max_hits: 30,
+              max_score: 300,
+              arrows_per_end: 3,
+              distance_1: "25yds",
+              face_1: 60,
+              ends_1: 10)
+              
+Round.create!(name: "Worcester",
+              indoor: true,
+              organisation: "Archery GB",
+              max_hits: 60,
+              max_score: 300,
+              arrows_per_end: 5,
+              distance_1: "25yds",
+              face_1: 40,
+              ends_1: 12,
+              notes: "First detail shoots at the top face, second detail shoots at the bottom face. After 6 ends details swap. Target face is 16 inch black and white with 5 scoring zones.")
+
+# Generate Handicaps from arrays nested in a hash.
+rounds = {}
+rounds["WA 1440 (Gentlemen)"] = [1400, 1396, 1392, 1388, 1384, 1379, 1374, 1369, 1364, 1358, 1352, 1346, 1340, 1333, 1326, 1319, 1311, 1303, 1295, 1287, 1278, 1268, 1259, 1248, 1238, 1227, 1215, 1203, 1190, 1177, 1163, 1149, 1134, 1118, 1101, 1083, 1065, 1046, 1026, 1004, 982, 959, 935, 911, 885, 858, 831, 803, 774, 745, 716, 686, 656, 626, 596, 567, 538, 509, 481, 453, 426, 401, 375, 351, 328, 305, 284, 264, 244, 226, 208, 191, 176, 161, 147, 134, 122, 111, 101, 91, 82, 74, 66, 59, 53, 47, 42, 37, 33, 29, 25, 22, 19, 17, 15, 13, 11, 10, 8, 7, 6]
+rounds["WA 1440 (Ladies)"] = [1412, 1409, 1406, 1402, 1398, 1394, 1390, 1385, 1381, 1376, 1371, 1365, 1360, 1354, 1348, 1342, 1335, 1328, 1321, 1314, 1306, 1298, 1289, 1281, 1272, 1262, 1252, 1242, 1231, 1220, 1208, 1196, 1183, 1169, 1155, 1141, 1125, 1109, 1092, 1075, 1056, 1037, 1016, 995, 973, 949, 925, 899, 873, 845, 817, 788, 758, 728, 697, 665, 634, 602, 571, 539, 508, 478, 448, 419, 391, 364, 338, 313, 289, 266, 245, 224, 205, 187, 171, 155, 140, 127, 114, 103, 92, 83, 74, 66, 59, 52, 46, 41, 36, 31, 28, 24, 21, 18, 16, 14, 12, 10, 9, 8, 7]
+rounds["Metric 1"] = [1412, 1409, 1406, 1402, 1398, 1394, 1390, 1385, 1381, 1376, 1371, 1365, 1360, 1354, 1348, 1342, 1335, 1328, 1321, 1314, 1306, 1298, 1289, 1281, 1272, 1262, 1252, 1242, 1231, 1220, 1208, 1196, 1183, 1169, 1155, 1141, 1125, 1109, 1092, 1075, 1056, 1037, 1016, 995, 973, 949, 925, 899, 873, 845, 817, 788, 758, 728, 697, 665, 634, 602, 571, 539, 508, 478, 448, 419, 391, 364, 338, 313, 289, 266, 245, 224, 205, 187, 171, 155, 140, 127, 114, 103, 92, 83, 74, 66, 59, 52, 46, 41, 36, 31, 28, 24, 21, 18, 16, 14, 12, 10, 9, 8, 7]
+rounds["Metric 2"] = [1425, 1423, 1420, 1417, 1414, 1411, 1407, 1404, 1400, 1396, 1392, 1387, 1382, 1377, 1372, 1367, 1362, 1356, 1350, 1344, 1337, 1330, 1323, 1316, 1308, 1300, 1292, 1283, 1274, 1265, 1255, 1245, 1235, 1223, 1212, 1200, 1187, 1174, 1160, 1146, 1131, 1115, 1099, 1081, 1063, 1044, 1024, 1003, 981, 959, 935, 909, 883, 856, 828, 799, 769, 738, 707, 675, 642, 610, 577, 544, 512, 480, 449, 418, 388, 360, 332, 306, 280, 256, 234, 213, 193, 174, 157, 141, 127, 113, 101, 90, 80, 70, 62, 55, 48, 42, 37, 32, 28, 24, 21, 18, 16, 13, 11, 10, 8]
+rounds["Metric 3"] = [1436, 1435, 1433, 1432, 1431, 1429, 1427, 1425, 1423, 1420, 1417, 1415, 1411, 1408, 1405, 1401, 1397, 1393, 1389, 1384, 1379, 1375, 1369, 1364, 1358, 1352, 1346, 1340, 1333, 1326, 1319, 1312, 1304, 1296, 1287, 1278, 1269, 1259, 1249, 1239, 1228, 1217, 1205, 1192, 1179, 1166, 1151, 1136, 1121, 1104, 1087, 1069, 1051, 1031, 1010, 988, 966, 942, 918, 892, 865, 838, 810, 781, 751, 721, 690, 659, 628, 597, 566, 536, 505, 475, 446, 418, 390, 363, 338, 313, 289, 267, 245, 225, 206, 188, 172, 156, 141, 128, 115, 104, 93, 83, 75, 66, 59, 52, 46, 41, 36]
+rounds["Metric 4"] = [nil, nil, nil, 1439, nil, 1438, 1437, nil, 1436, 1435, 1434, 1432, 1431, 1429, 1428, 1426, 1424, 1422, 1419, 1417, 1414, 1411, 1408, 1405, 1402, 1398, 1394, 1391, 1386, 1382, 1378, 1373, 1368, 1363, 1358, 1352, 1346, 1340, 1333, 1326, 1319, 1312, 1304, 1296, 1287, 1278, 1269, 1259, 1249, 1239, 1228, 1216, 1204, 1191, 1178, 1164, 1150, 1134, 1118, 1102, 1084, 1066, 1047, 1026, 1006, 984, 961, 938, 914, 889, 863, 837, 810, 783, 756, 728, 700, 672, 645, 617, 590, 563, 537, 511, 486, 462, 438, 415, 393, 372, 351, 332, 313, 294, 277, 260, 244, 228, 213, 199, 186]
+rounds["Metric 5"] = [nil, nil, nil, nil, nil, nil, nil, 1440, nil, nil, nil, 1439, nil, 1438, nil, 1437, 1436, 1435, 1434, 1433, 1432, 1431, 1429, 1427, 1425, 1423, 1421, 1419, 1416, 1413, 1410, 1407, 1404, 1400, 1396, 1392, 1388, 1383, 1379, 1374, 1369, 1363, 1358, 1352, 1346, 1339, 1332, 1325, 1318, 1311, 1303, 1295, 1286, 1277, 1268, 1258, 1248, 1237, 1226, 1215, 1203, 1190, 1177, 1163, 1149, 1133, 1118, 1101, 1084, 1066, 1047, 1027, 1006, 985, 963, 939, 916, 891, 865, 839, 813, 786, 758, 730, 701, 672, 643, 614, 585, 557, 528, 500, 472, 445, 418, 392, 366, 342, 318, 296, 274]
+rounds["Long Metric (Gentlemen)"] = [692, 690, 688, 685, 682, 679, 676, 673, 670, 667, 663, 660, 656, 652, 648, 644, 639, 635, 630, 625, 619, 614, 608, 602, 596, 589, 582, 575, 567, 559, 551, 542, 533, 523, 512, 502, 490, 478, 466, 452, 439, 424, 409, 394, 378, 361, 344, 327, 310, 293, 275, 258, 240, 224, 207, 191, 175, 161, 146, 133, 120, 108, 97, 87, 77, 69, 61, 54, 47, 41, 36, 31, 27, 24, 20, 17, 15, 13, 11, 9, 8, 7, 6, 5, 4, nil, 3, nil, nil, 2, nil, nil, nil, nil, nil, 1, nil, nil, nil, nil, nil]
+rounds["Long Metric (Ladies)"] = [705, 703, 701, 699, 697, 695, 692, 690, 687, 685, 682, 679, 676, 673, 670, 667, 663, 659, 656, 652, 648, 643, 639, 634, 629, 624, 619, 614, 608, 602, 595, 589, 582, 575, 567, 559, 550, 542, 532, 523, 512, 501, 490, 478, 465, 452, 438, 424, 409, 393, 377, 360, 343, 325, 307, 289, 272, 254, 236, 219, 202, 186, 170, 155, 141, 127, 115, 103, 92, 82, 73, 64, 57, 50, 44, 38, 33, 29, 25, 21, 18, 16, 13, 12, 10, 8, 7, 6, 5, nil, 4, nil, 3, nil, 2, nil, nil, nil, nil, nil, 1]
+rounds["Long Metric 1"] = [705, 703, 701, 699, 697, 695, 692, 690, 687, 685, 682, 679, 676, 673, 670, 667, 663, 659, 656, 652, 648, 643, 639, 634, 629, 624, 619, 614, 608, 602, 595, 589, 582, 575, 567, 559, 550, 542, 532, 523, 512, 501, 490, 478, 465, 452, 438, 424, 409, 393, 377, 360, 343, 325, 307, 289, 272, 254, 236, 219, 202, 186, 170, 155, 141, 127, 115, 103, 92, 82, 73, 64, 57, 50, 44, 38, 33, 29, 25, 21, 18, 16, 13, 12, 10, 8, 7, 6, 5, nil, 4, nil, 3, nil, 2, nil, nil, nil, nil, nil, 1]
+rounds["Long Metric 2"] = []
+rounds["Long Metric 3"] = []
+rounds["Long Metric 4"] = []
+rounds["Long Metric 5"] = []
+rounds["Short Metric 1"] = []
+rounds["Short Metric 2"] = []
+rounds["Short Metric 3"] = []
+rounds["Short Metric 4"] = []
+rounds["Short Metric 5"] = []
+rounds["Half WA (Gentlemen)"] = []
+rounds["Half WA (Ladies)"] = []
+rounds["Half Metric 1"] = []
+rounds["Half Metric 2"] = []
+rounds["Half Metric 3"] = []
+rounds["Half Metric 4"] = []
+rounds["Half Metric 5"] = []
+rounds["WA 900"] = []
+rounds["WA 70m"] = []
+rounds["WA 60m"] = []
+rounds["WA 50m"] = []
+rounds["Half WA 1"] = []
+rounds["WA Standard"] = []
+rounds["Frostbite"] = []
+rounds["WA 18m"] = []
+rounds["WA 25m"] = []
+rounds["WA Combined"] = []
+rounds["Stafford"] = []
+rounds["Vegas"] = []
+rounds["York"] = []
+rounds["Hereford"] = []
+rounds["Bristol 1"] = []
+rounds["Bristol 2"] = []
+rounds["Bristol 3"] = []
+rounds["Bristol 4"] = []
+rounds["Bristol 5"] = []
+rounds["New National"] = []
+rounds["Long National"] = []
+rounds["National"] = []
+rounds["Short National"] = []
+rounds["Junior National"] = []
+rounds["Short Junior National"] = []
+rounds["New Warwick"] = []
+rounds["Long Warwick"] = []
+rounds["Warwick"] = []
+rounds["Short Warwick"] = []
+rounds["Junior Warwick"] = []
+rounds["Short Junior Warwick"] = []
+rounds["New Western"] = []
+rounds["Long Western"] = []
+rounds["Western"] = []
+rounds["Short Western"] = []
+rounds["Junior Western"] = []
+rounds["Short Junior Western"] = []
+rounds["St George"] = []
+rounds["Albion"] = []
+rounds["Windsor"] = []
+rounds["Short Windsor"] = []
+rounds["Junior Windsor"] = []
+rounds["Short Junior Windsor"] = []
+rounds["American"] = []
+rounds["St Nicholas"] = []
+rounds["Portsmouth"] = []
+rounds["Bray I"] = []
+rounds["Bray II"] = []
+rounds["Worcester"] = []
+r_id = 1
+
+rounds.each do |round, scores|
+  v = 0
+  scores.each do |score|
+    Handicap.create!(round_id: r_id, value: v, score: score)
+    v += 1
+  end
+  r_id += 1
+end

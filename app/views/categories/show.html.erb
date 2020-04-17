@@ -1,0 +1,129 @@
+<% case @category.gender
+   when "F" %>
+    <% case @category.age
+       when 19 %>
+        <% category_name = "Ladies " + @category.bowtype %>
+      <% when 17 %>
+        <% category_name = "Junior Ladies - Under 18 " + @category.bowtype %>
+      <% when 15 %>
+        <% category_name = "Junior Ladies - Under 16 " + @category.bowtype %>
+      <% when 13 %>
+        <% category_name = "Junior Ladies - Under 14 " + @category.bowtype %>
+      <% when 11 %>
+        <% category_name = "Junior Ladies - Under 12 " + @category.bowtype %>
+    <% end %>
+  <% when "M" %>
+    <% case @category.age
+       when 19 %>
+        <% category_name = "Gentlemen " + @category.bowtype %>
+      <% when 17 %>
+        <% category_name = "Junior Gentlemen - Under 18 " + @category.bowtype %>
+      <% when 15 %>
+        <% category_name = "Junior Gentlemen - Under 16 " + @category.bowtype %>
+      <% when 13 %>
+        <% category_name = "Junior Gentlemen - Under 14 " + @category.bowtype %>
+      <% when 11 %>
+        <% category_name = "Junior Gentlemen - Under 12 " + @category.bowtype %>
+    <% end %>
+<% end %>
+<% provide(:title, "Classifications") %>
+<h1><%= category_name %></h1>
+<table class="classifications">
+  <thead>
+    <th>Imperial Rounds</th>
+    <th>GMB (<%= @category.gmb_hc %>)</th>
+    <th>MB (<%= @category.mb_hc %>)</th>
+    <th>Bowman (<%= @category.bowman_hc %>)</th>
+    <th>1st (<%= @category.first_hc %>)</th>
+    <th>2nd (<%= @category.second_hc %>)</th>
+    <th>3rd (<%= @category.third_hc %>)</th>
+  </thead>
+  <tbody>
+    <% Round.where(organisation: "Archery GB", indoor: false).each do |round| %>
+      <tr>
+        <td><%= link_to round.name, round %></td>
+        <td
+          <% if !round.gmb_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.gmb_hc).where.not(score: nil).take.score %></td>
+        <td
+          <% if !round.mb_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.mb_hc).where.not(score: nil).take.score %></td>
+        <td
+          <% if !round.bowman_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.bowman_hc).where.not(score: nil).take.score %></td>
+        <td
+          <% if !round.first_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.first_hc).where.not(score: nil).take.score %></td>
+        <td
+          <% if !round.second_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.second_hc).where.not(score: nil).take.score %></td>
+        <td
+          <% if !round.third_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.third_hc).where.not(score: nil).take.score %></td>
+      </tr>
+    <% end %>
+    </tr>
+  </tbody>
+</table>
+</br><hr></br>
+<table class="classifications">
+  <thead>
+    <th>Metric Rounds</th>
+    <th>GMB (<%= @category.gmb_hc %>)</th>
+    <th>MB (<%= @category.mb_hc %>)</th>
+    <th>Bowman (<%= @category.bowman_hc %>)</th>
+    <th>1st (<%= @category.first_hc %>)</th>
+    <th>2nd (<%= @category.second_hc %>)</th>
+    <th>3rd (<%= @category.third_hc %>)</th>
+  </thead>
+  <tbody>
+    <% Round.where(organisation: "World Archery", indoor: false).each do |round| %>
+      <tr>
+        <td><%= link_to round.name, round %></td>
+        <td
+          <% if !round.gmb_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.gmb_hc).where.not(score: nil).take.score %></td>
+        <td
+          <% if !round.mb_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.mb_hc).where.not(score: nil).take.score %></td>
+        <td
+          <% if !round.bowman_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.bowman_hc).where.not(score: nil).take.score %></td>
+        <td
+          <% if !round.first_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.first_hc).where.not(score: nil).take.score %></td>
+        <td
+          <% if !round.second_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.second_hc).where.not(score: nil).take.score %></td>
+        <td
+          <% if !round.third_achievable.match( /\s#{@category.id}\s/).nil? %>
+            class="bold"
+          <% end %>
+        ><%= round.handicaps.where("value >= ?", @category.third_hc).where.not(score: nil).take.score %></td>
+      </tr>
+    <% end %>
+    </tr>
+  </tbody>
+</table>

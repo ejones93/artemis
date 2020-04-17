@@ -154,7 +154,7 @@ aside {
 
 /* Users index */
 
-.users {
+.users, .rounds {
   list-style: none;
   margin: 0;
   li {
@@ -204,6 +204,28 @@ input {
     margin-left: 20px;
 	font-weight: normal;
   }
+}
+
+/* tables */
+
+table {
+  width: 100%;
+  border-width: 2px;
+  border-color: black;
+  th {
+    background-color: #CCC;
+  }
+  th, td {
+    text-align: center;
+    padding: 5px;
+    border: black 2px;
+  }
+  td.bold {
+    font-weight: bold;
+    background: lightblue;
+  }
+  tr:nth-child(even) {background: $gray-lighter}
+  tr:nth-child(odd) {background: #FFF}
 }
 
 /* microposts */

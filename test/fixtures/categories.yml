@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  gmb_hc: 1
+  mb_hc: 1
+  bowman_hc: 1
+  first_hc: 1
+  second_hc: 1
+  third_hc: 1
+
+two:
+  name: MyString
+  gmb_hc: 1
+  mb_hc: 1
+  bowman_hc: 1
+  first_hc: 1
+  second_hc: 1
+  third_hc: 1

@@ -8,7 +8,7 @@
 
 # Create a main sample user.
 User.create!(name:  "Example User", 
-			 email: "example@railstutorial.org", 
+			 email: "emlynjones93@gmail.com", 
 			 password: "foobar", 
 			 password_confirmation: "foobar", 
 			 admin: true,
@@ -28,17 +28,6 @@ User.create!(name:  "Example User",
 			   activated_at: Time.zone.now)
 end
 
-# Generate microposts for a subset of users.
-users = User.order(:created_at).take(6)
-50.times do
-  content = Faker::Lorem.sentence(word_count: 5)
-  users.each { |user| user.microposts.create!(content: content) }
+Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
+  load seed
 end
-
-# Create the following relationships.
-users = User.all
-user  = users.first
-following = users[2..50]
-followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
