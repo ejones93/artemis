@@ -1,137 +1,209 @@
 <% provide(:title, @round.name) %>
-  <section class="round_info">
+  <section>
     <h1>
     <%= @round.name %>
     </h1>
   </section>
   <section class="round_details">
-  <p>
-    <strong>Organisation:</strong>
-    <%= @round.organisation %>
-  </p>
-  <p>
-    <strong>Distances:</strong>
-    <%= @round.distances %>
-    <%= @round.distances_to_text %>
-  </p>
-  <p>
-    <strong>Maximum Hits/Score:</strong>
-    <%= @round.max_hits.to_s %> /
-    <%= @round.max_score.to_s %>
-  </p>
-  <p>
-    <strong>Scoring Rules:</strong>
-    <% agb_ros = "https://www.archerygb.org/wp-content/uploads/2020/02/Proc-01-09-RoS-January-2020v5.pdf" %>
-    <% case @round.organisation 
-       when "Archery GB" %>
-      <% case @round.indoor 
-         when true %>
-        <% case @round.name
-           when "Worcester" %>
-          As per 
-          <%= link_to "Archery GB Rules of Shooting", agb_ros %> 
-          408. the Worcester round is scored 5,4,3,2,1,M on a full size face, or 
-          5,4,M on a Five-Centre face, or X,5,4,M on a Five-Centre with additional 
-          "X-ring" Xs have a value of 5.
-        <% else %>
-          As per 
-          <%= link_to "Archery GB Rules of Shooting", agb_ros %>
-          404.(a) indoor rounds are scored 10,9,8,7,6,5,4,3,2,1,m on a full size face, 
-          10,9,8,7,6,M on a 5 zone face or triple face. Compound bows only score a 10 
-          if the arrow hits the inner 10, all other bowstyles score 10 on any arrow hitting
-          the inner gold.
-        <% end %>
-      <% else %>
-        As per 
-        <%= link_to "Archery GB Rules of Shooting", agb_ros %> 
-        306.(a)(i) "For all bowstyles the scoring points for hits on the target face for 
-        Archery GB Imperial Rounds are: Gold 9, Red 7, Blue 5, Black 3, White 1." and 
-        306.(a)(iv) "A miss is to be recorded as a letter M.". A count of golds (any arrow 
-        scoring 9) should be recorded to resolve a tie, as per rule 306.(s)(i).
-      <% end %>
-    <% when "World Archery" %>
-      <% case @round.indoor 
-         when true %>
-        <% case @round.name
-           when "Vegas 300" %>
-          As per 
-          <%= link_to "Archery GB Rules of Shooting", agb_ros %> 
-          409A. Vegas 300 rounds are scored X,10,9,8,7,6,M on a triple triangular face 
-          as defined in 401, Xs have a value of 10.  All bowstyles score the same.
-          <% when "Vegas" %>
-          As per 
-          <%= link_to "Archery GB Rules of Shooting", agb_ros %>         
-          409. Vegas rounds are scored 10,9,8,7,6,M on a triple triangular face as 
-          defined in rule 401.
-        <% else %>
-          As per 
-          <%= link_to "Archery GB Rules of Shooting", agb_ros %>
-          404.(a) indoor rounds are scored 10,9,8,7,6,5,4,3,2,1,M on a full size face, 
-          10,9,8,7,6,m on a 5 zone face or triple face. Compound bows only score a 10 
-          if the arrow hits the inner 10, all other bowstyles score 10 on any arrow hitting 
-          the inner gold.
-        <% end %>
-      <% else %>
-        As per <%= link_to "Archery GB Rules of Shooting", agb_ros %>
-        306.(a)(ii) "For all bowstyles the scoring points for hits on the target face for 
-        Archery GB Metric Rounds are: 
-        <table class="scoring">
-          <thead>
-            <tr>
-              <th>Zone</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Inner 10</td>
-              <td>Record as X, score value 10</td>
-            </tr>
-            <tr>
-              <td>Inner Gold</td>
-              <td>10</td>
-            </tr>
-            <tr>
-              <td>Outer Gold</td>
-              <td>9</td>
-            </tr>
-            <tr>
-              <td>Inner Red</td>
-              <td>8</td>
-            </tr>
-            <tr>
-              <td>Outer Red</td>
-              <td>7</td>
-            </tr>
-            <tr>
-              <td>Inner Blue</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td>Outer Blue</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <td>Inner Black</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Outer Black</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>Inner White</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <td>Outer White</td>
-              <td>1</td>
-            </tr>
-          </tbody>
-        </table> 
-        Rule 306.(a)(iv) states "A miss is to be recorded as a letter M". A count of Xs (any arrow 
-        hitting the Inner 10) as well as a seperate count of 10s (including Xs) should be 
-        recorded to resolve a tie, as per rule 306.(s)(ii).
-      <% end %>
-    <% end %>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#roundDetails" aria-expanded="true" aria-controls="roundDetails">
+              <i class="more-less glyphicon gluphicon-plus"></i>
+              Round Details
+            </a>
+          </h4>
+        </div>
+        <div id="roundDetails" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">        
+            <ul class="list-group">
+              <li class="list-group-item">
+                <strong>Organisation:</strong>
+                <%= @round.organisation %>
+              </li>
+              <li class="list-group-item">
+                <strong>
+                  <% if @round.distances > 1 %>
+                    Distances:
+                  <% else %>
+                    Distance:
+                  <% end %>
+                </strong>
+                <%= @round.distances %>
+                <%= @round.distances_to_text %>
+              </li>
+              <li class="list-group-item">
+                <strong>
+                  <% if @round.faces > 1 %>
+                    Faces:
+                  <% else %>
+                    Face:
+                  <% end %>
+                </strong>
+                <%= @round.faces %>
+                <%= @round.faces_to_text %>
+              </li>
+              <li class="list-group-item">
+                <strong>Maximum Hits/Score:</strong>
+                <%= @round.max_hits.to_s %> /
+                <%= @round.max_score.to_s %>
+              </li>
+              <li class="list-group-item">
+                <strong>Scoring Rules:</strong>
+                <% agb_ros = "https://www.archerygb.org/wp-content/uploads/2020/02/Proc-01-09-RoS-January-2020v5.pdf" %>
+                <% case @round.organisation 
+                   when "Archery GB" %>
+                  <% case @round.indoor 
+                     when true %>
+                    <% case @round.name
+                       when "Worcester" %>
+                      As per 
+                      <%= link_to "Archery GB Rules of Shooting", agb_ros %> 
+                      408. the Worcester round is scored 5,4,3,2,1,M on a full size face, or 
+                      5,4,M on a Five-Centre face, or X,5,4,M on a Five-Centre with additional 
+                      "X-ring" Xs have a value of 5.
+                    <% else %>
+                      As per 
+                      <%= link_to "Archery GB Rules of Shooting", agb_ros %>
+                      404.(a) indoor rounds are scored 10,9,8,7,6,5,4,3,2,1,m on a full size face, 
+                      10,9,8,7,6,M on a 5 zone face or triple face. Compound bows only score a 10 
+                      if the arrow hits the inner 10, all other bowstyles score 10 on any arrow hitting
+                      the inner gold.
+                    <% end %>
+                  <% else %>
+                    As per 
+                    <%= link_to "Archery GB Rules of Shooting", agb_ros %> 
+                    306.(a)(i) "For all bowstyles the scoring points for hits on the target face for 
+                    Archery GB Imperial Rounds are: Gold 9, Red 7, Blue 5, Black 3, White 1." and 
+                    306.(a)(iv) "A miss is to be recorded as a letter M.". A count of golds (any arrow 
+                    scoring 9) should be recorded to resolve a tie, as per rule 306.(s)(i).
+                  <% end %>
+                <% when "World Archery" %>
+                  <% case @round.indoor 
+                     when true %>
+                    <% case @round.name
+                       when "Vegas 300" %>
+                      As per 
+                      <%= link_to "Archery GB Rules of Shooting", agb_ros %> 
+                      409A. Vegas 300 rounds are scored X,10,9,8,7,6,M on a triple triangular face 
+                      as defined in 401, Xs have a value of 10.  All bowstyles score the same.
+                      <% when "Vegas" %>
+                      As per 
+                      <%= link_to "Archery GB Rules of Shooting", agb_ros %>         
+                      409. Vegas rounds are scored 10,9,8,7,6,M on a triple triangular face as 
+                      defined in rule 401.
+                    <% else %>
+                      As per 
+                      <%= link_to "Archery GB Rules of Shooting", agb_ros %>
+                      404.(a) indoor rounds are scored 10,9,8,7,6,5,4,3,2,1,M on a full size face, 
+                      10,9,8,7,6,m on a 5 zone face or triple face. Compound bows only score a 10 
+                      if the arrow hits the inner 10, all other bowstyles score 10 on any arrow hitting 
+                      the inner gold.
+                    <% end %>
+                  <% else %>
+                    As per <%= link_to "Archery GB Rules of Shooting", agb_ros %>
+                    306.(a)(ii) "For all bowstyles the scoring points for hits on the target face for 
+                    Archery GB Metric Rounds are: 
+                    <table class="scoring">
+                      <thead>
+                        <tr>
+                          <th>Zone</th>
+                          <th>Points</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Inner 10</td>
+                          <td>Record as X, score value 10</td>
+                        </tr>
+                        <tr>
+                          <td>Inner Gold</td>
+                          <td>10</td>
+                        </tr>
+                        <tr>
+                          <td>Outer Gold</td>
+                          <td>9</td>
+                        </tr>
+                        <tr>
+                          <td>Inner Red</td>
+                          <td>8</td>
+                        </tr>
+                        <tr>
+                          <td>Outer Red</td>
+                          <td>7</td>
+                        </tr>
+                        <tr>
+                          <td>Inner Blue</td>
+                          <td>6</td>
+                        </tr>
+                        <tr>
+                          <td>Outer Blue</td>
+                          <td>5</td>
+                        </tr>
+                        <tr>
+                          <td>Inner Black</td>
+                          <td>4</td>
+                        </tr>
+                        <tr>
+                          <td>Outer Black</td>
+                          <td>3</td>
+                        </tr>
+                        <tr>
+                          <td>Inner White</td>
+                          <td>2</td>
+                        </tr>
+                        <tr>
+                          <td>Outer White</td>
+                          <td>1</td>
+                        </tr>
+                      </tbody>
+                    </table> 
+                    Rule 306.(a)(iv) states "A miss is to be recorded as a letter M". A count of Xs (any arrow 
+                    hitting the Inner 10) as well as a seperate count of 10s (including Xs) should be 
+                    recorded to resolve a tie, as per rule 306.(s)(ii).
+                  <% end %>
+                <% end %>
+              </li>
+            </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#roundClassification" aria-expanded="true" aria-controls="roundClassification">
+                <i class="more-less glyphicon gluphicon-plus"></i>
+                Round Classifications
+              </a>
+            </h4>
+          </div>
+          <div id="roundClassification" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">     
+              <% if @round.indoor %>
+                <%= render 'indoor_classifications' %>
+              <% else %>
+                <%= render 'outdoor_classifications' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#roundScoresheet" aria-expanded="true" aria-controls="roundClassification">
+                <i class="more-less glyphicon gluphicon-plus"></i>
+                Round Scoresheets
+              </a>
+            </h4>
+          </div>
+          <div id="roundScoresheet" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+              <%= render 'scoresheet' %>
+              <%= link_to "Print Scoresheet", print_path %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>

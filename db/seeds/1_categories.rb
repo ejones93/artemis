@@ -8,7 +8,15 @@ Category.create!(bowtype: "Barebow",
                  bowman_hc: 49,
                  first_hc: 56,
                  second_hc: 64,
-                 third_hc: 71)
+                 third_hc: 71,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
 
 # ========== < 18 Gents Barebow =========== #                
 Category.create!(bowtype: "Barebow",
@@ -19,7 +27,15 @@ Category.create!(bowtype: "Barebow",
                  bowman_hc: 57,
                  first_hc: 62,
                  second_hc: 68,
-                 third_hc: 73)
+                 third_hc: 73,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
 
 # ========== < 16 Gents Barebow =========== #                 
 Category.create!(bowtype: "Barebow",
@@ -30,7 +46,15 @@ Category.create!(bowtype: "Barebow",
                  bowman_hc: 60,
                  first_hc: 65,
                  second_hc: 70,
-                 third_hc: 75)
+                 third_hc: 75,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
                  
 # ========== < 14 Gents Barebow =========== #                  
 Category.create!(bowtype: "Barebow",
@@ -41,7 +65,15 @@ Category.create!(bowtype: "Barebow",
                  bowman_hc: 67,
                  first_hc: 72,
                  second_hc: 77,
-                 third_hc: 83)
+                 third_hc: 83,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
                  
 # ========== < 12 Gents Barebow =========== #                  
 Category.create!(bowtype: "Barebow",
@@ -52,7 +84,15 @@ Category.create!(bowtype: "Barebow",
                  bowman_hc: 75,
                  first_hc: 81,
                  second_hc: 88,
-                 third_hc: 95)
+                 third_hc: 95,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
                   
 # ========= Senior Ladies Barebow ========= # 
 Category.create!(bowtype: "Barebow",
@@ -63,7 +103,15 @@ Category.create!(bowtype: "Barebow",
                  bowman_hc: 57,
                  first_hc: 64,
                  second_hc: 71,
-                 third_hc: 78)
+                 third_hc: 78,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
 
 # ========== < 18 Ladies Barebow =========== #                
 Category.create!(bowtype: "Barebow",
@@ -74,7 +122,15 @@ Category.create!(bowtype: "Barebow",
                  bowman_hc: 59,
                  first_hc: 64,
                  second_hc: 69,
-                 third_hc: 73)
+                 third_hc: 73,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
 
 # ========== < 16 Ladies Barebow =========== #                
 Category.create!(bowtype: "Barebow",
@@ -85,7 +141,15 @@ Category.create!(bowtype: "Barebow",
                  bowman_hc: 65,
                  first_hc: 70,
                  second_hc: 74,
-                 third_hc: 79)
+                 third_hc: 79,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
                  
 # ========== < 14 Ladies Barebow =========== #                
 Category.create!(bowtype: "Barebow",
@@ -96,7 +160,15 @@ Category.create!(bowtype: "Barebow",
                  bowman_hc: 72,
                  first_hc: 77,
                  second_hc: 83,
-                 third_hc: 90)
+                 third_hc: 90,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
                  
 # ========== < 12 Ladies Barebow =========== #                
 Category.create!(bowtype: "Barebow",
@@ -107,7 +179,15 @@ Category.create!(bowtype: "Barebow",
                  bowman_hc: 78,
                  first_hc: 84,
                  second_hc: 90,
-                 third_hc: 95)
+                 third_hc: 95,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
                                  
 # ========= Senior Gents Compound ========== #
 Category.create!(bowtype: "Compound",
@@ -118,7 +198,15 @@ Category.create!(bowtype: "Compound",
                  bowman_hc: 23,
                  first_hc: 32,
                  second_hc: 38,
-                 third_hc: 48)
+                 third_hc: 48,
+                 a_hc: 5,
+                 b_hc: 12,
+                 c_hc: 24,
+                 d_hc: 37,
+                 e_hc: 49,
+                 f_hc: 62,
+                 g_hc: 73,
+                 h_hc: 79)
                  
 # ========== < 18 Gents Compound =========== #                 
 Category.create!(bowtype: "Compound",
@@ -129,7 +217,15 @@ Category.create!(bowtype: "Compound",
                  bowman_hc: 32,
                  first_hc: 38,
                  second_hc: 48,
-                 third_hc: 56)
+                 third_hc: 56,
+                 a_hc: 5,
+                 b_hc: 12,
+                 c_hc: 24,
+                 d_hc: 37,
+                 e_hc: 49,
+                 f_hc: 62,
+                 g_hc: 73,
+                 h_hc: 79)
 
 # ========== < 16 Gents Compound =========== #                 
 Category.create!(bowtype: "Compound",
@@ -140,7 +236,15 @@ Category.create!(bowtype: "Compound",
                  bowman_hc: 38,
                  first_hc: 48,
                  second_hc: 56,
-                 third_hc: 61)
+                 third_hc: 61,
+                 a_hc: 5,
+                 b_hc: 12,
+                 c_hc: 24,
+                 d_hc: 37,
+                 e_hc: 49,
+                 f_hc: 62,
+                 g_hc: 73,
+                 h_hc: 79)
                  
 # ========== < 14 Gents Compound =========== #                 
 Category.create!(bowtype: "Compound",
@@ -151,7 +255,15 @@ Category.create!(bowtype: "Compound",
                  bowman_hc: 48,
                  first_hc: 56,
                  second_hc: 61,
-                 third_hc: 69)
+                 third_hc: 69,
+                 a_hc: 5,
+                 b_hc: 12,
+                 c_hc: 24,
+                 d_hc: 37,
+                 e_hc: 49,
+                 f_hc: 62,
+                 g_hc: 73,
+                 h_hc: 79)
                  
 # ========== < 12 Gents Compound =========== #                 
 Category.create!(bowtype: "Compound",
@@ -162,7 +274,15 @@ Category.create!(bowtype: "Compound",
                  bowman_hc: 56,
                  first_hc: 61,
                  second_hc: 71,
-                 third_hc: 79)
+                 third_hc: 79,
+                 a_hc: 5,
+                 b_hc: 12,
+                 c_hc: 24,
+                 d_hc: 37,
+                 e_hc: 49,
+                 f_hc: 62,
+                 g_hc: 73,
+                 h_hc: 79)
 
 # ========= Senior Ladies Compound ========= #
 Category.create!(bowtype: "Compound",
@@ -173,7 +293,15 @@ Category.create!(bowtype: "Compound",
                  bowman_hc: 29,
                  first_hc: 38,
                  second_hc: 49,
-                 third_hc: 56)
+                 third_hc: 56,
+                 a_hc: 12,
+                 b_hc: 18,
+                 c_hc: 30,
+                 d_hc: 43,
+                 e_hc: 55,
+                 f_hc: 67,
+                 g_hc: 79,
+                 h_hc: 83)
 
 # ========== < 18 Ladies Compound ========== #                
 Category.create!(bowtype: "Compound",
@@ -184,7 +312,15 @@ Category.create!(bowtype: "Compound",
                  bowman_hc: 38,
                  first_hc: 49,
                  second_hc: 56,
-                 third_hc: 66)
+                 third_hc: 66,
+                 a_hc: 12,
+                 b_hc: 18,
+                 c_hc: 30,
+                 d_hc: 43,
+                 e_hc: 55,
+                 f_hc: 67,
+                 g_hc: 79,
+                 h_hc: 83)
 
 # ========== < 16 Ladies Compound ========== #                
 Category.create!(bowtype: "Compound",
@@ -195,7 +331,15 @@ Category.create!(bowtype: "Compound",
                  bowman_hc: 49,
                  first_hc: 56,
                  second_hc: 66,
-                 third_hc: 74)
+                 third_hc: 74,
+                 a_hc: 12,
+                 b_hc: 18,
+                 c_hc: 30,
+                 d_hc: 43,
+                 e_hc: 55,
+                 f_hc: 67,
+                 g_hc: 79,
+                 h_hc: 83)
                  
 # ========== < 14 Ladies Compound ========== #                
 Category.create!(bowtype: "Compound",
@@ -206,7 +350,15 @@ Category.create!(bowtype: "Compound",
                  bowman_hc: 55,
                  first_hc: 65,
                  second_hc: 75,
-                 third_hc: 84)
+                 third_hc: 84,
+                 a_hc: 12,
+                 b_hc: 18,
+                 c_hc: 30,
+                 d_hc: 43,
+                 e_hc: 55,
+                 f_hc: 67,
+                 g_hc: 79,
+                 h_hc: 83)
                  
 # ========== < 12 Ladies Compound ========== #                
 Category.create!(bowtype: "Compound",
@@ -217,7 +369,15 @@ Category.create!(bowtype: "Compound",
                  bowman_hc: 63,
                  first_hc: 73,
                  second_hc: 83,
-                 third_hc: 91)
+                 third_hc: 91,
+                 a_hc: 12,
+                 b_hc: 18,
+                 c_hc: 30,
+                 d_hc: 43,
+                 e_hc: 55,
+                 f_hc: 67,
+                 g_hc: 79,
+                 h_hc: 83)
                      
 # ========== Senior Gents Longbow ========== #
 Category.create!(bowtype: "Longbow",
@@ -228,9 +388,17 @@ Category.create!(bowtype: "Longbow",
                  bowman_hc: 60,
                  first_hc: 65,
                  second_hc: 69,
-                 third_hc: 74)
+                 third_hc: 74,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
 
-# ========== < 18 Gents Compound =========== #                
+# ========== < 18 Gents Longbow =========== #                
 Category.create!(bowtype: "Longbow",
                  gender: "M",
                  age: 17,
@@ -239,9 +407,17 @@ Category.create!(bowtype: "Longbow",
                  bowman_hc: 62,
                  first_hc: 67,
                  second_hc: 73,
-                 third_hc: 79)
+                 third_hc: 79,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
 
-# ========== < 16 Gents Compound =========== #                
+# ========== < 16 Gents Longbow =========== #                
 Category.create!(bowtype: "Longbow",
                  gender: "M",
                  age: 15,
@@ -250,9 +426,17 @@ Category.create!(bowtype: "Longbow",
                  bowman_hc: 65,
                  first_hc: 70,
                  second_hc: 75,
-                 third_hc: 81)
+                 third_hc: 81,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
                  
-# ========== < 14 Gents Compound =========== #                
+# ========== < 14 Gents Longbow =========== #                
 Category.create!(bowtype: "Longbow",
                  gender: "M",
                  age: 13,
@@ -261,9 +445,17 @@ Category.create!(bowtype: "Longbow",
                  bowman_hc: 72,
                  first_hc: 77,
                  second_hc: 82,
-                 third_hc: 87)
+                 third_hc: 87,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
                  
-# ========== < 12 Gents Compound =========== #                
+# ========== < 12 Gents Longbow =========== #                
 Category.create!(bowtype: "Longbow",
                  gender: "M",
                  age: 11,
@@ -272,7 +464,15 @@ Category.create!(bowtype: "Longbow",
                  bowman_hc: 81,
                  first_hc: 87,
                  second_hc: 93,
-                 third_hc: 99)
+                 third_hc: 99,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
                  
 # ========== Senior Ladies Longbow ========= #
 Category.create!(bowtype: "Longbow",
@@ -283,7 +483,15 @@ Category.create!(bowtype: "Longbow",
                  bowman_hc: 65,
                  first_hc: 70,
                  second_hc: 73,
-                 third_hc: 82)
+                 third_hc: 82,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
 
 # ========== < 18 Ladies Longbow =========== #                
 Category.create!(bowtype: "Longbow",
@@ -294,7 +502,15 @@ Category.create!(bowtype: "Longbow",
                  bowman_hc: 64,
                  first_hc: 68,
                  second_hc: 73,
-                 third_hc: 77)
+                 third_hc: 77,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
 
 # ========== < 16 Ladies Longbow =========== #                
 Category.create!(bowtype: "Longbow",
@@ -305,7 +521,15 @@ Category.create!(bowtype: "Longbow",
                  bowman_hc: 70,
                  first_hc: 74,
                  second_hc: 78,
-                 third_hc: 83)
+                 third_hc: 83,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
                  
 # ========== < 14 Ladies Longbow =========== #                
 Category.create!(bowtype: "Longbow",
@@ -316,7 +540,15 @@ Category.create!(bowtype: "Longbow",
                  bowman_hc: 77,
                  first_hc: 82,
                  second_hc: 87,
-                 third_hc: 95)
+                 third_hc: 95,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
                  
 # ========== < 12 Ladies Longbow =========== #                
 Category.create!(bowtype: "Longbow",
@@ -327,7 +559,15 @@ Category.create!(bowtype: "Longbow",
                  bowman_hc: 83,
                  first_hc: 88,
                  second_hc: 94,
-                 third_hc: 99)
+                 third_hc: 99,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
                      
 # ========== Senior Gents Recurve ========== #
 Category.create!(bowtype: "Recurve",
@@ -338,7 +578,15 @@ Category.create!(bowtype: "Recurve",
                  bowman_hc: 36,
                  first_hc: 44,
                  second_hc: 50,
-                 third_hc: 58)
+                 third_hc: 58,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
 
 # =========== < 18 Gents Recurve =========== #                  
 Category.create!(bowtype: "Recurve",
@@ -349,7 +597,15 @@ Category.create!(bowtype: "Recurve",
                  bowman_hc: 39,
                  first_hc: 50,
                  second_hc: 58,
-                 third_hc: 68)
+                 third_hc: 68,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
 
 # =========== < 16 Gents Recurve =========== #                  
 Category.create!(bowtype: "Recurve",
@@ -360,7 +616,15 @@ Category.create!(bowtype: "Recurve",
                  bowman_hc: 48,
                  first_hc: 56,
                  second_hc: 62,
-                 third_hc: 71)
+                 third_hc: 71,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
                  
 # =========== < 14 Gents Recurve =========== #                  
 Category.create!(bowtype: "Recurve",
@@ -371,7 +635,15 @@ Category.create!(bowtype: "Recurve",
                  bowman_hc: 58,
                  first_hc: 66,
                  second_hc: 71,
-                 third_hc: 79)
+                 third_hc: 79,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
                  
 # =========== < 12 Gents Recurve =========== #                  
 Category.create!(bowtype: "Recurve",
@@ -382,7 +654,15 @@ Category.create!(bowtype: "Recurve",
                  bowman_hc: 69,
                  first_hc: 77,
                  second_hc: 83,
-                 third_hc: 92)
+                 third_hc: 92,
+                 a_hc: 14,
+                 b_hc: 21,
+                 c_hc: 33,
+                 d_hc: 46,
+                 e_hc: 58,
+                 f_hc: 70,
+                 g_hc: 80,
+                 h_hc: 85)
 
 # ========= Senior Ladies Recurve ========== #
 Category.create!(bowtype: "Recurve",
@@ -393,7 +673,15 @@ Category.create!(bowtype: "Recurve",
                  bowman_hc: 41,
                  first_hc: 50,
                  second_hc: 57,
-                 third_hc: 65)
+                 third_hc: 65,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
                  
 # ========== < 18 Ladies Recurve =========== #                
 Category.create!(bowtype: "Recurve",
@@ -404,7 +692,15 @@ Category.create!(bowtype: "Recurve",
                  bowman_hc: 48,
                  first_hc: 57,
                  second_hc: 64,
-                 third_hc: 70)
+                 third_hc: 70,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
 
 # =========== < 16 Ladies Recurve =========== #                  
 Category.create!(bowtype: "Recurve",
@@ -415,7 +711,15 @@ Category.create!(bowtype: "Recurve",
                  bowman_hc: 58,
                  first_hc: 66,
                  second_hc: 72,
-                 third_hc: 76)
+                 third_hc: 76,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
                  
 # =========== < 16 Ladies Recurve =========== #                  
 Category.create!(bowtype: "Recurve",
@@ -426,7 +730,15 @@ Category.create!(bowtype: "Recurve",
                  bowman_hc: 64,
                  first_hc: 73,
                  second_hc: 80,
-                 third_hc: 87)
+                 third_hc: 87,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)
                  
 # =========== < 12 Ladies Recurve =========== #                  
 Category.create!(bowtype: "Recurve",
@@ -437,4 +749,12 @@ Category.create!(bowtype: "Recurve",
                  bowman_hc: 70,
                  first_hc: 78,
                  second_hc: 87,
-                 third_hc: 93)
+                 third_hc: 93,
+                 a_hc: 21,
+                 b_hc: 27,
+                 c_hc: 39,
+                 d_hc: 51,
+                 e_hc: 64,
+                 f_hc: 75,
+                 g_hc: 85,
+                 h_hc: 90)

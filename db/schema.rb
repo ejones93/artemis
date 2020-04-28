@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_074517) do
+ActiveRecord::Schema.define(version: 2020_04_18_213617) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 2020_04_17_074517) do
     t.integer "first_hc"
     t.integer "second_hc"
     t.integer "third_hc"
+    t.integer "a_hc"
+    t.integer "b_hc"
+    t.integer "c_hc"
+    t.integer "d_hc"
+    t.integer "e_hc"
+    t.integer "f_hc"
+    t.integer "g_hc"
+    t.integer "h_hc"
   end
 
   create_table "handicaps", force: :cascade do |t|
@@ -115,6 +123,15 @@ ActiveRecord::Schema.define(version: 2020_04_17_074517) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.integer "current_outdoor_hc"
+    t.integer "current_indoor_hc"
+    t.string "current_outdoor_class"
+    t.string "current_indoor_class"
+    t.integer "age_group"
+    t.string "gender"
+    t.string "default_bowtype"
+    t.integer "category"
+    t.datetime "date_of_birth"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

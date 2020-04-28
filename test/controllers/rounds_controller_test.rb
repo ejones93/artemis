@@ -1,12 +1,8 @@
 require 'test_helper'
 
 class RoundsControllerTest < ActionDispatch::IntegrationTest
-  def setup
-    @user = users(:emlyn)
-  end
-  
-  test "should redirect index when not logged in" do
+  test "rounds path should load" do
     get rounds_path
-    assert_redirected_to login_url
+    assert_response :success
   end 
 end

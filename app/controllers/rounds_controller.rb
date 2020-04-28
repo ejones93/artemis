@@ -1,11 +1,16 @@
 class RoundsController < ApplicationController
-  before_action :logged_in_user, 	only: [:index, :show]
   
   def index
-    @rounds = Round.paginate(page: params[:page])
+    @rounds = Round.all
   end
   
   def show
     @round = Round.find(params[:id])
   end
+  
+  def print
+    @round = Round.find(params[:id])
+    render 'print', :layout => false
+  end
+  
 end

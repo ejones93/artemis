@@ -1,46 +1,37 @@
 <% provide(:title, 'All Rounds') %>
 <h1>All Rounds</h1>
 <div class="row">
-  <div class="col-md-6">
-    <h2>Archery GB</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <strong>Indoor</strong>
-        <ul class="rounds">
-          <% @rounds.where(organisation: "Archery GB", indoor: true).each do |round| %>
-            <%= render round %>
-          <% end %>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <strong>Outdoor</strong>
-        <ul class="rounds">
-          <% @rounds.where(organisation: "Archery GB", indoor: false).each do |round| %>
-            <%= render round %>
-          <% end %>
-        </ul>
-      </div>
+  <div class="col-md-4">
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">Indoor Rounds</h4>
+      </a>
+      <% @rounds.where(organisation: "Archery GB", indoor: true).where.not(bowstyle: "Compound").each do |round| %>
+        <%= render round %>
+      <% end %>
+      <% @rounds.where(organisation: "World Archery", indoor: true).where.not(bowstyle: "Compound").each do |round| %>
+        <%= render round %>
+      <% end %>
     </div>
   </div>
-  <div class="col-md-6">
-    <h2>World Archery</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <strong>Indoor</strong>
-        <ul class="rounds">
-          <% @rounds.where(organisation: "World Archery", indoor: true).each do |round| %>
-            <%= render round %>
-          <% end %>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <strong>Outdoor</strong>
-        <ul class="rounds">
-          <% @rounds.where(organisation: "World Archery", indoor: false).each do |round| %>
-            <%= render round %>
-          <% end %>
-        </ul>
-      </div>
+  <div class="col-md-4">
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">Imperial Rounds</h4>
+      </a>
+      <% @rounds.where(organisation: "Archery GB", indoor: false).each do |round| %>
+        <%= render round %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">Metric Rounds</h4>
+      </a>
+      <% @rounds.where(organisation: "World Archery", indoor: false).each do |round| %>
+        <%= render round %>
+      <% end %>
     </div>
   </div>
 </div>

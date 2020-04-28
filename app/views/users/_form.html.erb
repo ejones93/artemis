@@ -13,5 +13,14 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+  <%= f.label :gender %>
+  <%= f.select(:gender, ['Male', 'Female'], {include_blank: "Select something"}, { :class => 'form-control' })  %>
+  
+  <%= f.label :date_of_birth %>
+  <%= f.date_field :date_of_birth, class: 'form-control' %>
+  
+  <%= f.label :default_bowtype %>
+  <%= f.select(:default_bowtype, ['Recurve', 'Compound', 'Longbow', 'Barebow'], {include_blank: "Select something"}, { :class => 'form-control' })  %>
+  
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

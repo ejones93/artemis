@@ -1,0 +1,37 @@
+    <em>All of the awards below are achivable with the scores listed.</em>
+    <table class="classifications">
+      <thead>
+        <th><%= @round.name %></th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>D</th>
+        <th>E</th>
+        <th>F</th>
+        <th>G</th>
+        <th>H</th>
+      </thead>
+      <tbody>
+        <% compound_round = Round.where(name: @round.name).where(bowstyle: "Compound").take %>
+        <% categories = { "Gentlemen Non-Compound All Ages" => 1, "Ladies Non-Compound All Ages" => 6, "Gentlemen Compound All Ages" => 11, "Ladies Compound All Ages" => 16 } %>
+        <% categories.each do |category_name, category_id| %>
+          <% category = Category.find(category_id) %>
+          <% if category.bowtype == "Compound" && compound_round != nil %>
+            <% round_to_use = compound_round %>
+          <% else %>
+            <% round_to_use = @round %>
+          <% end %>
+          <tr>
+            <td><%= category_name %></td>
+            <td><%= round_to_use.handicaps.where("value >= ?", category.a_hc).where.not(score: nil).take.score %></td>
+            <td><%= round_to_use.handicaps.where("value >= ?", category.b_hc).where.not(score: nil).take.score %></td>
+            <td><%= round_to_use.handicaps.where("value >= ?", category.c_hc).where.not(score: nil).take.score %></td>
+            <td><%= round_to_use.handicaps.where("value >= ?", category.d_hc).where.not(score: nil).take.score %></td>
+            <td><%= round_to_use.handicaps.where("value >= ?", category.e_hc).where.not(score: nil).take.score %></td>
+            <td><%= round_to_use.handicaps.where("value >= ?", category.f_hc).where.not(score: nil).take.score %></td>
+            <td><%= round_to_use.handicaps.where("value >= ?", category.g_hc).where.not(score: nil).take.score %></td>
+            <td><%= round_to_use.handicaps.where("value >= ?", category.h_hc).where.not(score: nil).take.score %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

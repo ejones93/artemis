@@ -1,5 +1,13 @@
-<li>
-  <%= link_to round.name, round %>
-   - 
-  <%= round.details %>
-</li>
+<% if round.indoor %>
+  <% additional_class = "indoor" %>
+<% else %>
+  <% if round.organisation == "World Archery" %>
+    <% additional_class = "metric" %>
+  <% else %>
+    <% if round.organisation == "Archery GB" %>
+      <% additional_class = "imperial" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= link_to(raw("<h5 class=\"list-group-item-heading\">#{round.name}</h5><p class=\"list-group-item-text\">#{round.details}</p>"), round, class: "list-group-item #{additional_class}") %>

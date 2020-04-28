@@ -1,30 +1,28 @@
-<li>
-  <% case category.gender
-     when "F" %>
-      <% case category.age
-         when 19 %>
-          <%= link_to "Ladies", category %>
-        <% when 17 %>
-          <%= link_to "Junior Ladies - Under 18", category %>
-        <% when 15 %>
-          <%= link_to "Junior Ladies - Under 16", category %>
-        <% when 13 %>
-          <%= link_to "Junior Ladies - Under 14", category %>
-        <% when 11 %>
-          <%= link_to "Junior Ladies - Under 12", category %>
-      <% end %>
-    <% when "M" %>
-      <% case category.age
-         when 19 %>
-          <%= link_to "Gentlemen", category %>
-        <% when 17 %>
-          <%= link_to "Junior Gentlemen - Under 18", category %>
-        <% when 15 %>
-          <%= link_to "Junior Gentlemen - Under 16", category %>
-        <% when 13 %>
-          <%= link_to "Junior Gentlemen - Under 14", category %>
-        <% when 11 %>
-          <%= link_to "Junior Gentlemen - Under 12", category %>
-      <% end %>
-  <% end %>
-</li>
+<% case category.gender
+   when "F" %>
+    <% case category.age
+       when 19 %>
+        <%= link_to "Ladies", category, class: "list-group-item" %>
+      <% when 17 %>
+        <%= link_to "Junior Ladies - Under 18", category, class: "list-group-item" %>
+      <% when 15 %>
+        <%= link_to "Junior Ladies - Under 16", category, class: "list-group-item" %>
+      <% when 13 %>
+        <%= link_to "Junior Ladies - Under 14", category, class: "list-group-item" %>
+      <% when 11 %>
+        <%= link_to "Junior Ladies - Under 12", category, class: "list-group-item" %>
+    <% end %>
+  <% when "M" %>
+    <% case category.age
+       when 19 %>
+        <%= link_to "Gentlemen", category, class: "list-group-item" %>
+      <% when 17 %>
+        <%= link_to "Junior Gentlemen - Under 18", category, class: "list-group-item" %>
+      <% when 15 %>
+        <%= link_to "Junior Gentlemen - Under 16", category, class: "list-group-item" %>
+      <% when 13 %>
+        <%= link_to "Junior Gentlemen - Under 14", category, class: "list-group-item" %>
+      <% when 11 %>
+        <%= link_to "Junior Gentlemen - Under 12", category, class: "list-group-item" %>
+    <% end %>
+<% end %>

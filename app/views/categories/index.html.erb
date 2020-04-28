@@ -1,36 +1,17 @@
 <% provide(:title, 'All categories') %>
 <h1>All Categories</h1>
 <div class="row">
-  <div class="col-md-3">
-    <h2>Recurve Bows</h2>
-    <ul class="categories">
-      <% @categories.where(bowtype: "Recurve").each do |category| %>
-        <%= render category %>
-      <% end %>
-    </ul>
-  </div>
-  <div class="col-md-3">
-    <h2>Compound Bows</h2>
-    <ul class="categories">
-      <% @categories.where(bowtype: "Compound").each do |category| %>
-        <%= render category %>
-      <% end %>
-    </ul>
-  </div>
-  <div class="col-md-3">
-    <h2>Longbows</h2>
-    <ul class="categories">
-      <% @categories.where(bowtype: "Longbow").each do |category| %>
-        <%= render category %>
-      <% end %>
-    </ul>
-  </div>
-  <div class="col-md-3">
-    <h2>Barebows</h2>
-    <ul class="categories">
-      <% @categories.where(bowtype: "Barebow").each do |category| %>
-        <%= render category %>
-      <% end %>
-    </ul>
-  </div>
+  <% bows_hash = {"Recurve Bows" => "Recurve", "Compound Bows" => "Compound", "Longbows" => "Longbow", "Barebows" => "Barebow"} %>
+  <% bows_hash.each do |label, bowtype| %>
+    <div class="col-md-3">
+      <div class="list-group">
+        <a href="#" class="list-group-item active">
+          <%= label %>
+        </a>
+        <% @categories.where(bowtype: bowtype).each do |category| %>
+          <%= render category %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>

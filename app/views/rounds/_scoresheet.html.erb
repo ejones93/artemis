@@ -1,0 +1,146 @@
+<% round_has_x = false %>
+<% if @round.arrows_per_end == 3 %>
+  <% round_arrows_per_end = 6 %>
+  <% ends_per_doz = 4 %>
+<% else %>
+  <% round_arrows_per_end = @round.arrows_per_end %>
+  <% ends_per_doz = 2 %>
+<% end %>
+<%# Check if round should have Xs and if header should be Golds/10s/5s %>
+<% case @round.indoor 
+   when true %>
+    <% case @round.name
+       when "Worcester" %>
+        <% round_has_x = true %>
+        <% round_gold_header = "5s" %>
+      <% when "Vegas 300" %>
+        <% round_has_x = true %>
+        <% round_gold_header = "10s" %>
+      <% else %>
+        <% round_has_x = false %>
+        <% round_gold_header = "10s" %>
+    <% end %>
+  <% when false %>
+    <% case @round.organisation
+       when "Archery GB" %>
+        <% round_has_x = false %>
+        <% round_gold_header = "Golds" %>
+      <% when "World Archery" %>
+        <% round_has_x = true %>
+        <% round_gold_header = "10s" %>
+    <% end %>
+<% end %>
+<table class="scoresheet_head">
+  <thead>
+    <tr>
+      <th>Name:</th>
+      <th></th>
+      <th>Club:</th>
+      <th></th>
+      <th>Date:</th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    </tr>
+    <tr>
+      <th>Round:</th>
+      <th><%= @round.name %></th>
+      <th>Category:</th>
+      <th class="bowtype">G&nbsp;/&nbsp;L | Jnr&nbsp;age:&nbsp;&nbsp; </th>
+      <th>Bowtype:</th>
+      <th class="bowtype"><span>R</span><span>C</span><span>LB</span><span>BB</span></th>
+    </tr>
+  </thead>
+</table>
+<table class="scoresheet">
+  <thead>
+    <tr>
+      <th>J.</th>
+      <th colspan="<%= round_arrows_per_end %>"></th>
+      <th> E/T </th>
+      <th colspan="<%= round_arrows_per_end %>"></th>
+      <th> E/T </th>
+      <th> Hits </th>
+      <th> Score </th>
+      <th> <%= round_gold_header %> </th>
+      <% if round_has_x %>
+        <th> Xs </th>
+      <% end %>
+      <th> R/T </th>
+    </tr>    
+  </thead>
+  <tbody>
+    <% round_details = {@round.distance_1 => @round.ends_1, @round.distance_2 => @round.ends_2, @round.distance_3 => @round.ends_3, @round.distance_4 => @round.ends_4} %>
+    <% round_details.each do |distance, ends| %>
+      <% if ends.nil? || distance.nil? %>
+        <% break %>
+      <% else %>
+        <% (ends / ends_per_doz).times { %>
+          <tr>
+            <td class="judges"></td>
+            <% round_arrows_per_end.times { %>
+              <td class="arrow_value"></td>
+            <% } %>
+            <td class="end_total"></td>
+            <% round_arrows_per_end.times { %>
+              <td class="arrow_value"></td>
+            <% } %>
+            <td class="end_total"></td>
+            <td class="doz_hits"></td>
+            <td class="doz_score"></td>
+            <td class="doz_golds"></td>
+            <% if round_has_x %>
+              <td class="doz_xs"></td>
+            <% end %>
+            <td class="running_total"></td>
+          </tr>
+        <% } %>
+        <% if (ends * @round.arrows_per_end / round_arrows_per_end).odd? %>
+          <tr>
+            <td class="judges"></td>
+            <% round_arrows_per_end.times { %>
+              <td class="arrow_value"></td>
+            <% } %>
+            <td class="end_total"></td>
+            <td class="blanked_out" colspan=" <%= round_arrows_per_end %> "></td>
+            <td class="blanked_out"></td>
+            <td class="doz_hits"></td>
+            <td class="doz_score"></td>
+            <td class="doz_golds"></td>
+            <% if round_has_x %>
+              <td class="doz_xs"></td>
+            <% end %>
+            <td class="running_total"></td>
+          </tr>
+        <% end %>
+        <% if @round.distance_2 != nil %>
+            <tr>
+              <td colspan=" <%= round_arrows_per_end * 2 + 3 %> ">Totals for <%= distance %>:</td>
+              <td class="distance_total_hits"></td>
+              <td class="distance_total_score"></td>
+              <td class="distance_total_golds"></td>
+              <% if round_has_x %>
+                <td class="distance_total_xs"></td>
+              <% end %>
+              <td class="blanked_out"></td>
+            </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+    <tr>
+      <td class="signature" colspan=" <%= round_arrows_per_end * 2 + 1 %> ">Archer's Signature:</td>      
+      <td rowspan="2" colspan="2">Totals</td>
+      <td rowspan="2" class="total_hits"></td>
+      <td rowspan="2" class="total_score"></td>
+      <td rowspan="2" class="total_golds"></td>
+      <% if round_has_x %>
+        <td rowspan="2" class="total_xs"></td>
+      <% end %>
+      <td rowspan="2" class="blanked_out"></td>
+    </tr>
+    <tr>
+      <td class="signature" colspan=" <%= round_arrows_per_end * 2 + 1 %> ">Scorer's Signature:</td>
+    </tr>
+  </tbody>
+</table>
+        
+        
+        

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+    <%= render 'layouts/rails_default' %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <% if @round.max_hits <= 96 %>
+          <% 2.times { %>
+            <tr>
+              <% if @round.max_hits <= 60 %>
+                <td><%= render 'scoresheet' %></td>
+                <td><%= render 'scoresheet' %></td>
+              <% else %>
+                <td><%= render 'scoresheet' %></td>
+              <% end %>
+            </tr>
+          <% } %>
+        <% else %>
+          <tr>
+            <td><%= render 'scoresheet' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>
