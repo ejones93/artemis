@@ -1,5 +1,5 @@
 emlyn:
-  name: Emlyn Example
+  name: Emlyn Jones
   email: emlyn@example.com
   password_digest: <%= User.digest('password') %>
   admin: true

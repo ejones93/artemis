@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_213617) do
+ActiveRecord::Schema.define(version: 2020_04_29_090141) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -110,6 +110,33 @@ ActiveRecord::Schema.define(version: 2020_04_18_213617) do
     t.string "bowstyle"
   end
 
+  create_table "scores", force: :cascade do |t|
+    t.integer "score"
+    t.integer "hits"
+    t.integer "golds"
+    t.integer "xs"
+    t.integer "round_id", null: false
+    t.integer "category_id", null: false
+    t.integer "user_id", null: false
+    t.string "name"
+    t.text "comment"
+    t.date "date"
+    t.string "location"
+    t.integer "handicap"
+    t.string "classification"
+    t.boolean "home"
+    t.boolean "club_record"
+    t.boolean "county_record"
+    t.boolean "uk_record"
+    t.boolean "validated"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_scores_on_category_id"
+    t.index ["round_id"], name: "index_scores_on_round_id"
+    t.index ["user_id", "created_at"], name: "index_scores_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_scores_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -138,4 +165,7 @@ ActiveRecord::Schema.define(version: 2020_04_18_213617) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "handicaps", "rounds"
   add_foreign_key "microposts", "users"
+  add_foreign_key "scores", "categories"
+  add_foreign_key "scores", "rounds"
+  add_foreign_key "scores", "users"
 end

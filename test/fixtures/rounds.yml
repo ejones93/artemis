@@ -1,15 +1,48 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
+wa1440g:
+  name: "WA 1440 (Gentlemen)"
   indoor: false
-  organisation: MyString
-  max_hits: 1
-  max_score: 1
-
-two:
-  name: MyString
+  organisation: "World Archery"
+  max_hits: 144
+  max_score: 1440
+  arrows_per_end: 6
+  distance_1: "90m"
+  face_1: 122
+  ends_1: 6
+  distance_2: "70m"
+  face_2: 122
+  ends_2: 6
+  distance_3: "50m"
+  face_3: 80
+  ends_3: 6
+  distance_4: "30m"
+  face_4: 80
+  ends_4: 6
+  gmb_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "
+  mb_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "
+  bowman_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "
+  first_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "
+  second_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "
+  third_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "
+  
+york:
+  name: "York"
   indoor: false
-  organisation: MyString
-  max_hits: 1
-  max_score: 1
+  organisation: "Archery GB"
+  max_hits: 144
+  max_score: 1296
+  arrows_per_end: 6
+  distance_1: "100yds"
+  face_1: 122
+  ends_1: 12
+  distance_2: "80yds"
+  face_2: 122
+  ends_2: 8
+  distance_3: "60yds"
+  face_3: 122
+  ends_3: 4
+  gmb_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "
+  mb_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "
+  bowman_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "
+  first_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "
+  second_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "
+  third_achievable: " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 "

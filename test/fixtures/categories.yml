@@ -1,0 +1,19 @@
+sen_gents_barebow:
+  bowtype: "Barebow"
+  gender: "M"
+  age: 19
+  gmb_hc: 40
+  mb_hc: 45
+  bowman_hc: 49
+  first_hc: 56
+  second_hc: 64
+  third_hc: 71
+  a_hc: 14
+  b_hc: 21
+  c_hc: 33
+  d_hc: 46
+  e_hc: 58
+  f_hc: 70
+  g_hc: 80
+  h_hc: 85
+    
