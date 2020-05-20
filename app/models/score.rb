@@ -10,7 +10,7 @@ class Score < ApplicationRecord
   validates :hits, presence: true
   validates :location, presence: true
   validates :date, presence: true
-  validate :date_after_today
+  validate :date_possible
   validate :score_possible
   
   def init
@@ -20,7 +20,7 @@ class Score < ApplicationRecord
   
   private
   
-  def date_after_today
+  def date_possible
     return if date.blank?
     
     if date > Date.today

@@ -4,6 +4,9 @@ User.create!(name:  "Example User",
 			 password: "foobar", 
 			 password_confirmation: "foobar", 
 			 admin: true,
+       gender: "Male",
+       default_bowtype: "Recurve",
+       date_of_birth: Date.parse("1993-09-08"),
 			 activated: true,
 			 activated_at: Time.zone.now)
 
@@ -16,6 +19,9 @@ User.create!(name:  "Example User",
 			   email: email, 
 			   password: password, 
 			   password_confirmation: password,
+         gender: "Male",
+         default_bowtype: "Recurve",
+         date_of_birth: Date.parse("1990-01-01"),
 			   activated: true,
 			   activated_at: Time.zone.now)
 end

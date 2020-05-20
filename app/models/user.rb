@@ -12,11 +12,15 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save { email.downcase! }
   before_create :create_activation_digest
-  validates :name,  presence: true, length: { maximum: 50 }
+  validates :name,          presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
+  validates :email,         presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password,      presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :date_of_birth, presence: true
+  validate :valid_dob?
+  validate :valid_gender?
+  validate :valid_bowtype?
   
   # Returns the hash digest of a given string.
   def User.digest(string)
@@ -107,5 +111,33 @@ class User < ApplicationRecord
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
-    # End of private.
+    
+    # Check date of birth is between 1900 and the current date
+    def valid_dob?
+      return if date_of_birth.blank?
+      
+      unless date_of_birth > Date.parse("1900-01-01")
+        errors.add(:date_of_birth, "please enter a valid date of birth")
+      end
+      unless date_of_birth < Date.today
+        errors.add(:date_of_birth, "must be in the past")
+      end
+    end    
+
+    # Check gender is an expected value
+    def valid_gender?
+      genders = ["Male", "Female"]
+      unless genders.include?(gender)
+        errors.add(:gender, "please pick from the options available")
+      end
+    end
+    
+    # Check default bowtype is an expected value
+    def valid_bowtype?
+      bowtypes = ["Barebow", "Compound", "Longbow", "Recurve"]
+      unless bowtypes.include?(default_bowtype)
+        errors.add(:default_bowtype, "please pick from the options available")
+      end
+    end
+  # End of private.
 end
