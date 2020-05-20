@@ -1,5 +1,6 @@
 class Round < ApplicationRecord
   has_many :handicaps
+  has_many :scores
   
   # Returns the number of distances in a round 
   def distances

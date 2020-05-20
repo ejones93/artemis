@@ -100,6 +100,26 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
   
+  # Returns the category id for a user based on their age, gender and bowtype
+  def find_category(bowtype, date)
+    age = ((date.to_time - date_of_birth.to_time) / 1.year.seconds).floor
+    case
+      when age < 12
+        age_group = 11
+      when age < 14
+        age_group = 13
+      when age < 16
+        age_group = 15
+      when age < 18
+        age_group = 17
+      when age >= 18
+        age_group = 19
+      else
+        "Error: date of (#{date}) gives invalid age (#{age})"
+    end
+    Category.where(Gender: gender.first, age: age_group, bowtype: bowtype).take.id
+  end
+  
   private
     # Converts email to all lower-case.
     def downcase_email
@@ -119,6 +139,7 @@ class User < ApplicationRecord
       unless date_of_birth > Date.parse("1900-01-01")
         errors.add(:date_of_birth, "please enter a valid date of birth")
       end
+      
       unless date_of_birth < Date.today
         errors.add(:date_of_birth, "must be in the past")
       end

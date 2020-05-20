@@ -6,12 +6,11 @@ class ScoreTest < ActiveSupport::TestCase
     @round        = rounds(:wa1440g)
     @od_imp_round = rounds (:york)
     @category = categories(:sen_gents_barebow)
-    @score = @user.scores.new(score: 1, 
+    @score = @user.scores.build(score: 1, 
                        hits: 1,
                        round_id: @round.id,
-                       category_id: @category.id,
-                       user_id: @user.id,
                        location: "somewhere",
+                       bowtype: "Barebow",
                        date: Date.today)
   end
 
@@ -29,8 +28,19 @@ class ScoreTest < ActiveSupport::TestCase
     assert_not @score.valid?
   end
   
-  test "category id should be present" do
-    @score.category_id = nil
+  test "Bowtype should be present" do
+    @score.bowtype = nil
+    assert_not @score.valid?
+  end
+  
+  test "Bowtype can only be an expected value" do
+    @score.bowtype = "Compound"
+    assert @score.valid?
+    @score.bowtype = "Longbow"
+    assert @score.valid?
+    @score.bowtype = "Recurve"
+    assert @score.valid?
+    @score.bowtype = "Crossbow"
     assert_not @score.valid?
   end
   
@@ -56,6 +66,22 @@ class ScoreTest < ActiveSupport::TestCase
   
   test "date cannot be in the future" do
     @score.date = Date.tomorrow
+    assert_not @score.valid?
+  end
+  
+  test "date cannot be before users birthday" do
+    @score.date = @user.date_of_birth - 1
+    assert_not @score.valid?
+  end
+  
+  test "record status can only be an expected value or nil" do
+    @score.record_status = "none"
+    assert @score.valid?
+    @score.record_status = "ukrs"
+    assert @score.valid?
+    @score.record_status = "wrs"
+    assert @score.valid?
+    @score.record_status = "blah"
     assert_not @score.valid?
   end
   
