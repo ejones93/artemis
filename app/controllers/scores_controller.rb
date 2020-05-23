@@ -15,7 +15,7 @@ class ScoresController < ApplicationController
   end
   
   def destroy
-    @score.destroy
+    Score.find(params[:id]).destroy
     flash[:success] = "Score deleted"
     redirect_back(fallback_location: root_url)
   end

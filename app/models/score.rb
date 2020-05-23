@@ -22,7 +22,12 @@ class Score < ApplicationRecord
                                       message: "must be a valid inage format" },
                       size:         { less_than: 5.megabytes,
                                       message: "should be less than 5MB" }
-                                      
+  
+  # Check if a score is a personal best for a user
+  def pb?
+    self == Score.where(round_id: self.round_id, user_id: self.user_id, category_id: self.category_id).order(score: :desc, golds: :desc, xs: :desc, hits: :desc, date: :desc).take
+  end
+  
   # Returns a resized image for display
   def display_image
     image.variant(resize_to_limit: [500, 500])

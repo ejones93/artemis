@@ -124,21 +124,21 @@ class UserTest < ActiveSupport::TestCase
     assert_not other_user.followers.include?(emlyn)
   end
   
-  test "feed should have the right posts" do
-    emlyn           = users(:emlyn)
-    followed_user   = users(:test)
-    unfollowed_user = users(:user_5)
-    # Posts from followed user
-    followed_user.microposts.each do |post_following|
-      assert emlyn.feed.include?(post_following)
-    end
-    # Posts from self
-    emlyn.microposts.each do |post_self|
-      assert emlyn.feed.include?(post_self)
-    end
-    # Posts from unfollowed user
-    unfollowed_user.microposts.each do |post_unfollowed|
-      assert_not emlyn.feed.include?(post_unfollowed)
-    end
-  end
+  #test "feed should have the right posts" do
+  #  emlyn           = users(:emlyn)
+  #  followed_user   = users(:test)
+  #  unfollowed_user = users(:user_5)
+  #  # Posts from followed user
+  #  followed_user.microposts.each do |post_following|
+  #    assert emlyn.feed.include?(post_following)
+  #  end
+  #  # Posts from self
+  #  emlyn.microposts.each do |post_self|
+  #    assert emlyn.feed.include?(post_self)
+  #  end
+  #  # Posts from unfollowed user
+  #  unfollowed_user.microposts.each do |post_unfollowed|
+  #    assert_not emlyn.feed.include?(post_unfollowed)
+  #  end
+  #end
 end

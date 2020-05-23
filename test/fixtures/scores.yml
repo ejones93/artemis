@@ -11,3 +11,16 @@ emlyn_york:
   bowtype: "Compound"
   created_at: <%= 10.minutes.ago %>
 
+<% 30.times do |n| %>
+score_<%= n %>:
+  user: emlyn
+  round: wa1440g
+  category: sen_gents_compound
+  score: 1
+  hits: 1
+  record_status: "none"
+  date: Date.parse("2017-08-12") - (n*7).days
+  location: "Somewhere"
+  bowtype: "Compound"
+  created_at: <%= 42.days.ago %>
+<% end %>

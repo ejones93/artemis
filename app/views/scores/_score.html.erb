@@ -1,7 +1,7 @@
 <% bowtype = score.bowtype %>
 <% indoor_classes = {"Barebow" => "indoor-barebow", "Compound" => "indoor-compound", "Longbow" => "indoor-longbow", "Recurve" => "indoor-recurve"} %>
 <% outdoor_classes = {"Barebow" => "outdoor-barebow", "Compound" => "outdoor-compound", "Longbow" => "outdoor-longbow", "Recurve" => "outdoor-recurve"} %>
-<% case score.indoor %>
+<% case score.round.indoor %>
   <% when true %>
     <% category_class = indoor_classes[bowtype] %>
   <% when false %>
