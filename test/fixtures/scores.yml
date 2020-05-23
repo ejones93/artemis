@@ -1,1 +1,13 @@
+emlyn_york:
+  user: emlyn
+  round: york
+  category: sen_gents_compound
+  score: 1228
+  hits: 144
+  golds: 111
+  record_status: "ukrs"
+  date: Date.parse("2017-08-12")
+  location: "Jolly Archers Cambridge"
+  bowtype: "Compound"
+  created_at: <%= 10.minutes.ago %>
 

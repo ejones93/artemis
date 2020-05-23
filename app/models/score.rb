@@ -1,23 +1,32 @@
 class Score < ApplicationRecord
   belongs_to :user
   belongs_to :round
-  belongs_to :category
+  belongs_to :category, optional: true
+  has_one_attached  :image
+  default_scope -> { order(date: :desc) }
   after_initialize :init
   before_validation :set_category
   validates :user_id, presence: true
   validates :round_id, presence: true
-  validates :category_id, presence: true
   validates :score, presence: true
   validates :hits, presence: true
   validates :location, presence: true
   validates :bowtype, presence: true
   validates :date, presence: true
   validates :record_status, presence: true
-  validate :date_possible?
   validate :score_possible?
   validate :valid_rs?
   before_save :set_hc
   before_save :set_class
+  validates :image,   content_type: { in: %w[image/jpeg unage/gif image/png],
+                                      message: "must be a valid inage format" },
+                      size:         { less_than: 5.megabytes,
+                                      message: "should be less than 5MB" }
+                                      
+  # Returns a resized image for display
+  def display_image
+    image.variant(resize_to_limit: [500, 500])
+  end
   
   private
     def init
@@ -43,6 +52,7 @@ class Score < ApplicationRecord
     
     # Check default bowtype is an expected value
     def valid_bowtype?
+  
       bowtypes = ["Barebow", "Compound", "Longbow", "Recurve"]
       if bowtypes.include?(bowtype)
         return true
@@ -54,6 +64,8 @@ class Score < ApplicationRecord
     
     # Check record status is an expected value
     def valid_rs?
+      return if record_status.blank?
+      
       statuses = ["none", "ukrs", "wrs"]
       unless statuses.include?(record_status)
         errors.add(:record_status, "please pick from the options available")

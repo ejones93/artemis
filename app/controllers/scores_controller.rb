@@ -1,6 +1,6 @@
 class ScoresController < ApplicationController
-  before_action :logged_in_user, only: :create
-  before_action :admin_user,   only: :destroy
+  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :admin_user,     only: :destroy
   
   def create
     @score = current_user.scores.build(score_params)
@@ -25,7 +25,7 @@ class ScoresController < ApplicationController
       params.require(:score).permit(:score, :hits, :golds, :xs, :round_id, :bowtype, :location, :record_status, :date, :image)
     end
     
-    # Confirms and admin user/
+    # Confirms an admin user
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end

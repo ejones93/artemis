@@ -120,6 +120,118 @@ class User < ApplicationRecord
     Category.where(Gender: gender.first, age: age_group, bowtype: bowtype).take.id
   end
   
+  # Gets scores from an outdoor season (defaults to this year)
+  def outdoor_season(year = Date.today.year)
+    start_date = year.to_s + "-01-01"
+    end_date = year.to_s + "-12-31"
+    Score.where(user_id: id, indoor: false).where("date BETWEEN '#{start_date}' AND '#{end_date}'")
+  end
+  
+  # Gets scores from an indoor season (defaults to this year)
+  def indoor_season(year = Date.today.year)
+    if Date.today.month > 7
+      start_date = year.to_s + "-07-01"
+      end_date = (year + 1).to_s + "-06-30"
+    else
+      start_date = (year - 1).to_s + "-07-01"
+      end_date = year.to_s + "-06-30"
+    end
+    Score.where(user_id: id, indoor: true).where("date BETWEEN '#{start_date}' AND '#{end_date}'")
+  end
+  
+  # Find a users current handicaps and classifications
+  def update_user_stats(bowtype, indoor)
+    # Set bowtype categories
+    case bowtype
+      when "Barebow"
+        bowtypes = Array(1..10)
+      when "Compound"
+        bowtypes = Array(11..20)
+      when "Longbow"
+        bowtypes = Array(21..30)
+      when "Recurve"
+        bowtypes = Array(31..40)
+    end
+    # Check previous years scores and get classifications for last year and this year
+    case indoor
+      when false
+        top_scores = self.outdoor_season(Date.today.year-1).where("category_id IN (#{bowtypes.join(', ')})").reorder(handicap: :asc).limit(3).map(&:handicap)
+        classifications = self.outdoor_season(Date.today.year-1).where("category_id IN (#{bowtypes.join(', ')})").map(&:classification)
+        last_year_class = check_classification(classifications)
+        classifications = self.outdoor_season.where("category_id IN (#{bowtypes.join(', ')})").map(&:classification)
+        this_year_class = check_classification(classifications)
+        handicaps = self.outdoor_season.where("category_id IN (#{bowtypes.join(', ')})").reorder(date: :asc).map(&:handicap)
+      when true
+        top_scores = self.indoor_season(Date.today.year-1).where("category_id IN (#{bowtypes.join(', ')})").reorder(handicap: :asc).limit(3).map(&:handicap)
+        classifications = self.indoor_season(Date.today.year-1).where("category_id IN (#{bowtypes.join(', ')})").map(&:classification)
+        last_year_class = check_classification(classifications)
+        classifications = self.indoor_season.where("category_id IN (#{bowtypes.join(', ')})").map(&:classification)
+        this_year_class = check_classification(classifications)
+        handicaps = self.indoor_season.where("category_id IN (#{bowtypes.join(', ')})").reorder(date: :asc).map(&:handicap)
+    end
+    # Check if last years classification is better than this years
+    if last_year_class[1] < this_year_class[1]
+      new_class = last_year_class[0]
+    else
+      new_class = this_year_class[0]
+    end
+    # If previous year has > 3 scores use those and update with each new score this year.
+    if top_scores.compact.length != 3
+      case indoor
+        when false
+          top_scores = self.outdoor_season.where("category_id IN (#{bowtypes.join(', ')})").reorder(date: :asc).limit(3).map(&:handicap)
+        when true
+          top_scores = self.indoor_season.where("category_id IN (#{bowtypes.join(', ')})").reorder(date: :asc).limit(3).map(&:handicap)
+      end
+    end
+    if top_scores.compact.length == 3
+      avg_hc = top_scores.sum / 3
+      handicaps.shift(3)
+    end
+    if avg_hc
+      case indoor
+        when false
+          case bowtype
+            when "Barebow"
+              self.outdoor_barebow_hc = check_handicap(handicaps, avg_hc)
+              self.outdoor_barebow_class = new_class
+            when "Compound"
+              self.outdoor_compound_hc = check_handicap(handicaps, avg_hc)
+              self.outdoor_compound_class = new_class
+            when "Longbow"
+              self.outdoor_longbow_hc = check_handicap(handicaps, avg_hc)
+              self.outdoor_longbow_class = new_class
+            when "Recurve"
+              self.outdoor_recurve_hc = check_handicap(handicaps, avg_hc)
+              self.outdoor_recurve_class = new_class
+          end
+        when true
+          case bowtype
+            when "Barebow"
+              self.indoor_barebow_hc = check_handicap(handicaps, avg_hc)
+              self.indoor_barebow_class = new_class
+            when "Compound"
+              self.indoor_compound_hc = check_handicap(handicaps, avg_hc)
+              self.indoor_compound_class = new_class
+            when "Longbow"
+              self.indoor_longbow_hc = check_handicap(handicaps, avg_hc)
+              self.indoor_longbow_class = new_class
+            when "Recurve"
+              self.indoor_recruve_hc = check_handicap(handicaps, avg_hc)
+              self.indoor_recurve_class = new_class
+          end
+      end
+    end
+    self.save
+  end
+  
+  def update_all_bowtypes
+    bowtypes = ["Barebow", "Compound", "Longbow", "Recurve"]
+    bowtypes.each do |bowtype|
+      self.update_user_stats(bowtype, true)
+      self.update_user_stats(bowtype, false)
+    end
+  end
   private
     # Converts email to all lower-case.
     def downcase_email

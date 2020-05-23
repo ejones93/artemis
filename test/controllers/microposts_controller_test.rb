@@ -27,4 +27,12 @@ class MicropostsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_url
   end
+  
+  test "should destroy when logged in" do
+    log_in_as(users(:emlyn))
+    assert_difference 'Micropost.count', -1 do
+      delete micropost_path(@micropost)
+    end
+    assert_redirected_to root_url
+  end
 end

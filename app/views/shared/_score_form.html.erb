@@ -1,0 +1,87 @@
+<%= form_with(model: @score, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div class="input-group">
+    <span class="input-group-addon" id="date">Date</span>
+    <%= f.date_field :date, class: "form-control", max: Date.today.to_s, min: @user.date_of_birth.to_s %>
+  </div>
+  
+  <div class="input-group">
+    <span class="input-group-addon" id="round">Round</span>
+    <% rounds = Round.distinct.pluck(:name, :id).uniq { |round| round.first } %>
+    <%= f.select :round_id, options_for_select(rounds), {prompt: "Select Round", selected: '', disabled: ''}, class: "form-control" %>
+  </div>
+  
+  <div class="input-group">
+    <span class="input-group-addon" id="bowtype">Bowtype</span>
+    <% bowtypes = [["Barebow"],["Compound"],["Longbow"],["Recruve"]] %>
+    <%= f.select :bowtype, options_for_select(bowtypes, @user.default_bowtype), {}, class: "form-control" %>
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="score">Score</span>
+    <%= f.number_field :score, class: "form-control", placeholder: 0, min: 0 %>
+  </div>
+  
+  <div class="input-group">
+    <span class="input-group-addon" id="hits">Hits</span>
+    <%= f.number_field :hits, class: "form-control", placeholder: 0, min: 0 %>
+  </div>
+  
+  <div class="input-group">
+    <span class="input-group-addon" id="golds">Golds</span>
+    <%= f.number_field :golds, class: "form-control", value: "", placeholder: 0, min: 0%>
+  </div>
+  
+  <div class="input-group" id="xs">
+    <span class="input-group-addon" id="xs">Xs</span>
+    <%= f.number_field :xs, class: "form-control", value: "", placeholder: 0, min: 0 %>
+  </div>
+  
+  <div class="input-group">
+    <span class="input-group-addon" id="location">Location</span>
+    <%= f.text_field :location, class: "form-control" %>
+  </div>
+      
+  <%= f.label :record_status %>
+  <div class="radio">
+    <label>
+      <%= f.radio_button :record_status, "none" %>
+      None
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <%= f.radio_button :record_status, "ukrs" %>
+      UK Record Status
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <%= f.radio_button :record_status, "wrs" %>
+      World Record Status
+    </label>
+  </div>
+  
+  <div class="input-group">
+    <%= f.label :comment %>
+    <%= f.text_area :comment, class: "form-control" %>
+  </div>
+  
+  <%= f.label :scoresheet_image %>
+  <span class="image">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+  </span>
+  
+   <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
+
+<script type="text/javascript">
+  $("#score_image").bind("change", function() {
+    const size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert("Maximum file size is 5MB. Please choose a smaller file.");
+      $("#score_image").val("");
+    }
+  });
+</script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_175308) do
+ActiveRecord::Schema.define(version: 2020_05_21_133408) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -161,6 +161,22 @@ ActiveRecord::Schema.define(version: 2020_05_20_175308) do
     t.string "default_bowtype"
     t.integer "category"
     t.datetime "date_of_birth"
+    t.string "outdoor_barebow_class"
+    t.integer "outdoor_barebow_hc"
+    t.string "indoor_barebow_class"
+    t.integer "indoor_barebow_hc"
+    t.string "outdoor_compound_class"
+    t.integer "outdoor_compound_hc"
+    t.string "indoor_compound_class"
+    t.integer "indoor_compound_hc"
+    t.string "outdoor_longbow_class"
+    t.integer "outdoor_longbow_hc"
+    t.string "indoor_longbow_class"
+    t.integer "indoor_longbow_hc"
+    t.string "outdoor_recurve_class"
+    t.integer "outdoor_recurve_hc"
+    t.string "indoor_recurve_class"
+    t.integer "indoor_recurve_hc"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
