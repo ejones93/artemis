@@ -27,12 +27,15 @@ class ScoresInterfaceTest < ActionDispatch::IntegrationTest
     # Valid submission
     image = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
     assert_difference 'Score.count', 1 do
-      post scores_path, params: { score: { score: 1, 
-                                           hits: 1,
+      post scores_path, params: { score: { score: 1347, 
+                                           hits: 144,
+                                           golds: 76,
+                                           xs: 28,
                                            round_id: @round.id,
                                            location: "somewhere",
-                                           bowtype: "Barebow",
+                                           bowtype: "Compound",
                                            date: Date.today, 
+                                           record_status: "wrs",
                                            comment: comment,
                                            image: image} }
     end
@@ -40,6 +43,10 @@ class ScoresInterfaceTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
     follow_redirect!
     assert_match comment, response.body
+    class_text = "Class: </strong>Master Bowman"
+    hc_text = "Handicap: </strong>11"
+    assert_match class_text, response.body
+    assert_match hc_text, response.body
     # Delete post
     assert_select 'a', text: 'delete'
     first_score = @user.scores.paginate(page: 1).first

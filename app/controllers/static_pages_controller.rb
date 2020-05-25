@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
     if logged_in?
       @micropost = current_user.microposts.build
       @score = current_user.scores.build
-      @feed_items = current_user.feed.paginate(page: params[:page])
+      @feed_items = current_user.feed.paginate(page: params[:page], per_page: 5)
     end
   end
 

@@ -14,7 +14,7 @@
   
   <div class="input-group">
     <span class="input-group-addon" id="bowtype">Bowtype</span>
-    <% bowtypes = [["Barebow"],["Compound"],["Longbow"],["Recruve"]] %>
+    <% bowtypes = [["Barebow"],["Compound"],["Longbow"],["Recurve"]] %>
     <%= f.select :bowtype, options_for_select(bowtypes, @user.default_bowtype), {}, class: "form-control" %>
   </div>
 
@@ -33,7 +33,7 @@
     <%= f.number_field :golds, class: "form-control", value: "", placeholder: 0, min: 0%>
   </div>
   
-  <div class="input-group" id="xs">
+  <div class="input-group" id="xs" style="display: none">
     <span class="input-group-addon" id="xs">Xs</span>
     <%= f.number_field :xs, class: "form-control", value: "", placeholder: 0, min: 0 %>
   </div>

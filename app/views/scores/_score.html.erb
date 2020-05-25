@@ -66,8 +66,12 @@
         <% end %>
         <strong>Category: </strong><%= category %><br>
         <strong>Bowtype: </strong><%= bowtype %><br>
-        <strong>Class: </strong><%= score.classification %><br>
-        <strong>Handicap: </strong><%= score.handicap.to_s %>
+        <% if !score.classification.blank? %>
+          <strong>Class: </strong><%= score.classification %><br>
+        <% end %>
+        <% if !score.handicap.blank? %>
+          <strong>Handicap: </strong><%= score.handicap.to_s %>
+        <% end %>
       </div>
     </div>
     <% if !score.comment.blank? %> 

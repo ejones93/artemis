@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_133408) do
+ActiveRecord::Schema.define(version: 2020_05_25_131926) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_133408) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "bowtype"
     t.string "record_status"
+    t.boolean "indoor"
     t.index ["category_id"], name: "index_scores_on_category_id"
     t.index ["round_id"], name: "index_scores_on_round_id"
     t.index ["user_id", "created_at"], name: "index_scores_on_user_id_and_created_at"

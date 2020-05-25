@@ -1,0 +1,46 @@
+<% chart_data = [] %>
+
+<% outdoor_barebow = @user.outdoor_season.where(bowtype: "Barebow").where.not(handicap: nil).pluck(:date, :handicap) %>
+<% if !outdoor_barebow.blank? %>
+  <% chart_data.push({name: "Outdoor Barebow", data: outdoor_barebow, color: "#00BCD4"}) %>
+<% end %>
+
+<% indoor_barebow = @user.indoor_season.where(bowtype: "Barebow").where.not(handicap: nil).pluck(:date, :handicap) %>
+<% if !indoor_barebow.blank? %>
+  <% chart_data.push({name: "Indoor Barebow", data: indoor_barebow, color: "#009688"}) %>
+<% end %>
+
+<% outdoor_compound = @user.outdoor_season.where(bowtype: "Compound").where.not(handicap: nil).pluck(:date, :handicap) %>
+<% if !outdoor_compound.blank? %>
+  <% chart_data.push({name: "Outdoor Compound", data: outdoor_compound, color: "#8BC34A"}) %>
+<% end %>
+
+<% indoor_compound = @user.indoor_season.where(bowtype: "Compound").where.not(handicap: nil).pluck(:date, :handicap) %>
+<% if !indoor_compound.blank? %>
+  <% chart_data.push({name: "Indoor Compound", data: indoor_compound, color: "#4CAF50"}) %>
+<% end %>
+
+<% outdoor_longbow = @user.outdoor_season.where(bowtype: "Longbow").where.not(handicap: nil).pluck(:date, :handicap) %>
+<% if !outdoor_longbow.blank? %>
+  <% chart_data.push({name: "Outdoor Longbow", data: outdoor_longbow, color: "#FFC107"}) %>
+<% end %>
+
+<% indoor_longbow = @user.indoor_season.where(bowtype: "Longbow").where.not(handicap: nil).pluck(:date, :handicap) %>
+<% if !indoor_longbow.blank? %>
+  <% chart_data.push({name: "Indoor Longbow", data: indoor_longbow, color: "#FF5722"}) %>
+<% end %>
+
+<% outdoor_recurve = @user.outdoor_season.where(bowtype: "Recurve").where.not(handicap: nil).pluck(:date, :handicap) %>
+<% if !outdoor_recurve.blank? %>
+  <% chart_data.push({name: "Outdoor Recurve", data: outdoor_recurve, color: "#FF9800"}) %>
+<% end %>
+
+<% indoor_recurve = @user.indoor_season.where(bowtype: "Recurve").where.not(handicap: nil).pluck(:date, :handicap) %>
+<% if !indoor_recurve.blank? %>
+  <% chart_data.push({name: "Indoor Recurve", data: indoor_recurve, color: "#F44336"}) %>
+<% end %>
+
+<% if !chart_data.blank? %>
+  <h3>Handicap  Chart</h3>
+  <%= line_chart chart_data, download: true, library: {spanGaps: true} %>
+<% end %>

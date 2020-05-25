@@ -22,7 +22,7 @@ class ScoresController < ApplicationController
   
   private
     def score_params
-      params.require(:score).permit(:score, :hits, :golds, :xs, :round_id, :bowtype, :location, :record_status, :date, :image)
+      params.require(:score).permit(:date, :round_id, :bowtype, :score, :hits, :golds, :xs, :location, :record_status,  :comment, :image)
     end
     
     # Confirms an admin user

@@ -16,8 +16,7 @@ class Score < ApplicationRecord
   validates :record_status, presence: true
   validate :score_possible?
   validate :valid_rs?
-  before_save :set_hc
-  before_save :set_class
+  before_save :score_details
   validates :image,   content_type: { in: %w[image/jpeg unage/gif image/png],
                                       message: "must be a valid inage format" },
                       size:         { less_than: 5.megabytes,
@@ -25,7 +24,7 @@ class Score < ApplicationRecord
   
   # Check if a score is a personal best for a user
   def pb?
-    self == Score.where(round_id: self.round_id, user_id: self.user_id, category_id: self.category_id).order(score: :desc, golds: :desc, xs: :desc, hits: :desc, date: :desc).take
+    self == Score.where(round_id: self.round_id, user_id: self.user_id, category_id: self.category_id).reorder(score: :desc, golds: :desc, xs: :desc, hits: :desc, date: :asc).take
   end
   
   # Returns a resized image for display
@@ -84,13 +83,24 @@ class Score < ApplicationRecord
       end
     end
     
-    # Calculate the handicap and assign it 
-    def set_hc
+    # Copy the value of indoor from the round 
+    def score_details    
+      self.indoor = self.round.indoor
+      self.name = self.user.name
+      if self.indoor
+        # Get bowtype specific round (if it exists)
+        if self.bowtype != "Compound"
+          bowstyle = "Non Compound"
+        else
+          bowstyle = "Compound"
+        end
+        bowtype_round = Round.where(name: self.round.name).where('bowstyle = ? OR bowstyle = ? OR bowstyle = ?', bowstyle, "All", nil).take
+        if self.round.id != bowtype_round.id
+          round = bowtype_round
+          self.round_id = round.id
+        end
+      end
       self.handicap = self.round.handicap(self.score)
-    end
-    
-    # Calculate the class and assign it 
-    def set_class
       self.classification = self.category.classification(self.handicap, self.round.indoor, self.record_status)
     end
     
