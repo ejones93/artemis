@@ -1,15 +1,55 @@
 <% @user ||= current_user %>
 <div class="stats">
-  <a href="<%= following_user_path(@user) %>">
-    <strong id="following" class="stat">
-      <%= @user.following.count %>
-    </strong>
-    following
-  </a>
-  <a href="<%= followers_user_path(@user) %>">
-    <strong id="followers" class="stat">
-      <%= @user.followers.count %>
-    </strong>
-    followers
-  </a>
+  <table>
+    <tbody>
+      <% unless @user.outdoor_barebow_hc.blank? && @user.indoor_barebow_hc.blank? %>
+        <tr>
+          <td class="outdoor-barebow">
+            Outdoor Barebow
+            <strong><%= @user.outdoor_barebow_class || "Unclassified" %> | <%= (@user.outdoor_barebow_hc || "N/A").to_s %></strong>
+          </td>
+          <td class="indoor-barebow">
+            Indoor Barebow
+            <strong><%= @user.indoor_barebow_class || "Unclassified" %> | <%= (@user.indoor_barebow_hc || "N/A").to_s %></strong>
+          </td>
+        </tr>
+      <% end %>
+      <% unless @user.outdoor_compound_hc.blank? && @user.indoor_compound_hc.blank? %>
+        <tr>
+          <td class="outdoor-compound">
+            Outdoor Compound
+            <strong><%= @user.outdoor_compound_class || "Unclassified" || "Unclassified" %> | <%= (@user.outdoor_compound_hc || "N/A").to_s %></strong>
+          </td>
+          <td class="indoor-compound">
+            Indoor Compound
+            <strong><%= @user.indoor_compound_class || "Unclassified" %> | <%= (@user.indoor_compound_hc || "N/A").to_s %></strong>
+          </td>
+        </tr>
+      <% end %>
+      <% unless @user.outdoor_longbow_hc.blank? && @user.indoor_longbow_hc.blank? %>
+        <tr>
+          <td class="outdoor-longbow">
+            Outdoor Longbow
+            <strong><%= @user.outdoor_longbow_class || "Unclassified" %> | <%= (@user.outdoor_longbow_hc || "N/A").to_s %></strong>
+          </td>
+          <td class="indoor-longbow">
+            Indoor Longbow
+            <strong><%= @user.indoor_longbow_class || "Unclassified" %> | <%= (@user.indoor_longbow_hc || "N/A").to_s %></strong>
+          </td>
+        </tr>
+      <% end %>
+      <% unless @user.outdoor_recurve_hc.blank? && @user.indoor_recurve_hc.blank? %>
+        <tr>
+          <td class="outdoor-recurve">
+            Outdoor Recurve
+            <strong><%= @user.outdoor_recurve_class || "Unclassified" %> | <%= (@user.outdoor_recurve_hc || "N/A").to_s %></strong>
+          </td>
+          <td class="indoor-recurve">
+            Indoor Recurve
+            <strong><%= @user.indoor_recurve_class || "Unclassified" %> | <%= (@user.indoor_recurve_hc || "N/A").to_s %></strong>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

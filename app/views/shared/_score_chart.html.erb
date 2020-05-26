@@ -7,17 +7,17 @@
 
 <% indoor_barebow = @user.indoor_season.where(bowtype: "Barebow").where.not(handicap: nil).pluck(:date, :handicap) %>
 <% if !indoor_barebow.blank? %>
-  <% chart_data.push({name: "Indoor Barebow", data: indoor_barebow, color: "#009688"}) %>
+  <% chart_data.push({name: "Indoor Barebow", data: indoor_barebow, color: "#5C6BC0"}) %>
 <% end %>
 
 <% outdoor_compound = @user.outdoor_season.where(bowtype: "Compound").where.not(handicap: nil).pluck(:date, :handicap) %>
 <% if !outdoor_compound.blank? %>
-  <% chart_data.push({name: "Outdoor Compound", data: outdoor_compound, color: "#8BC34A"}) %>
+  <% chart_data.push({name: "Outdoor Compound", data: outdoor_compound, color: "#CDDC39"}) %>
 <% end %>
 
 <% indoor_compound = @user.indoor_season.where(bowtype: "Compound").where.not(handicap: nil).pluck(:date, :handicap) %>
 <% if !indoor_compound.blank? %>
-  <% chart_data.push({name: "Indoor Compound", data: indoor_compound, color: "#4CAF50"}) %>
+  <% chart_data.push({name: "Indoor Compound", data: indoor_compound, color: "#66BB6A"}) %>
 <% end %>
 
 <% outdoor_longbow = @user.outdoor_season.where(bowtype: "Longbow").where.not(handicap: nil).pluck(:date, :handicap) %>
@@ -27,7 +27,7 @@
 
 <% indoor_longbow = @user.indoor_season.where(bowtype: "Longbow").where.not(handicap: nil).pluck(:date, :handicap) %>
 <% if !indoor_longbow.blank? %>
-  <% chart_data.push({name: "Indoor Longbow", data: indoor_longbow, color: "#FF5722"}) %>
+  <% chart_data.push({name: "Indoor Longbow", data: indoor_longbow, color: "#8D6E63"}) %>
 <% end %>
 
 <% outdoor_recurve = @user.outdoor_season.where(bowtype: "Recurve").where.not(handicap: nil).pluck(:date, :handicap) %>
@@ -37,10 +37,10 @@
 
 <% indoor_recurve = @user.indoor_season.where(bowtype: "Recurve").where.not(handicap: nil).pluck(:date, :handicap) %>
 <% if !indoor_recurve.blank? %>
-  <% chart_data.push({name: "Indoor Recurve", data: indoor_recurve, color: "#F44336"}) %>
+  <% chart_data.push({name: "Indoor Recurve", data: indoor_recurve, color: "#EF5350"}) %>
 <% end %>
 
 <% if !chart_data.blank? %>
   <h3>Handicap  Chart</h3>
-  <%= line_chart chart_data, download: true, library: {spanGaps: true} %>
+  <%= line_chart chart_data, download: {background: "#FAFAFA", filename: @user.name + "-HandicapChart" + Date.today.year.to_s }, curve: false, library: {spanGaps: true} %>
 <% end %>

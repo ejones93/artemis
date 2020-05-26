@@ -15,7 +15,9 @@ class ScoresController < ApplicationController
   end
   
   def destroy
+    user = Score.find(params[:id]).user
     Score.find(params[:id]).destroy
+    user.update_all_bowtypes
     flash[:success] = "Score deleted"
     redirect_back(fallback_location: root_url)
   end

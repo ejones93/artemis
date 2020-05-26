@@ -1,6 +1,18 @@
 <%= form_with(model: @score, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   
+  <%# Keep values of previous input if rejected, set to blank if nil/new %>
+  <% if !params.blank? && !params[:score].blank? %>
+    <% golds = params[:score][:golds] %>
+    <% xs = params[:score][:xs] %>
+    <% bowtype = params[:score][:bowtype] %>
+    <% round = params[:score][:round_id] %>
+  <% end %>
+  <% golds ||= '' %>
+  <% xs ||= '' %>
+  <% bowtype ||= @user.default_bowtype %>
+  <% round ||= '' %>
+  
   <div class="input-group">
     <span class="input-group-addon" id="date">Date</span>
     <%= f.date_field :date, class: "form-control", max: Date.today.to_s, min: @user.date_of_birth.to_s %>
@@ -9,13 +21,13 @@
   <div class="input-group">
     <span class="input-group-addon" id="round">Round</span>
     <% rounds = Round.distinct.pluck(:name, :id).uniq { |round| round.first } %>
-    <%= f.select :round_id, options_for_select(rounds), {prompt: "Select Round", selected: '', disabled: ''}, class: "form-control" %>
+    <%= f.select :round_id, rounds, {prompt: "Select Round", selected: round, disabled: ''}, class: "form-control" %>
   </div>
   
   <div class="input-group">
     <span class="input-group-addon" id="bowtype">Bowtype</span>
     <% bowtypes = [["Barebow"],["Compound"],["Longbow"],["Recurve"]] %>
-    <%= f.select :bowtype, options_for_select(bowtypes, @user.default_bowtype), {}, class: "form-control" %>
+    <%= f.select :bowtype, options_for_select(bowtypes, bowtype), {}, class: "form-control" %>
   </div>
 
   <div class="input-group">
@@ -30,7 +42,7 @@
   
   <div class="input-group">
     <span class="input-group-addon" id="golds">Golds</span>
-    <%= f.number_field :golds, class: "form-control", value: "", placeholder: 0, min: 0%>
+    <%= f.number_field :golds, class: "form-control", value: golds, placeholder: 0, min: 0%>
   </div>
   
   <div class="input-group" id="xs" style="display: none">

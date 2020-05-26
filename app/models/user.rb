@@ -214,7 +214,7 @@ class User < ApplicationRecord
               self.indoor_longbow_hc = check_handicap(handicaps, avg_hc)
               self.indoor_longbow_class = new_class
             when "Recurve"
-              self.indoor_recruve_hc = check_handicap(handicaps, avg_hc)
+              self.indoor_recurve_hc = check_handicap(handicaps, avg_hc)
               self.indoor_recurve_class = new_class
           end
       end
@@ -268,6 +268,54 @@ class User < ApplicationRecord
       unless bowtypes.include?(default_bowtype)
         errors.add(:default_bowtype, "please pick from the options available")
       end
+    end
+    
+    # Check if there are 3 of a class
+    def check_classification(classifications = [])
+      counts = Hash.new(0)
+      classifications.each { |classification| counts[classification] += 1 }
+      case
+        when counts["Grand Master Bowman"] >= 3
+          ["Grand Master Bowman",1]
+        when counts["Grand Master Bowman"] + counts["Master Bowman"] >= 3
+          ["Master Bowman",2]
+        when counts["Grand Master Bowman"] + counts["Master Bowman"] + counts["Bowman"] >= 3
+          ["Bowman",3]
+        when counts["Grand Master Bowman"] + counts["Master Bowman"] + counts["Bowman"] + counts["1st"] >= 3
+          ["1st",4]
+        when counts["Grand Master Bowman"] + counts["Master Bowman"] + counts["Bowman"] + counts["1st"] + counts["2nd"] >= 3
+          ["2nd",5]
+        when counts["Grand Master Bowman"] + counts["Master Bowman"] + counts["Bowman"] + counts["1st"] + counts["2nd"] + counts["3rd"] >= 3
+          ["3rd",6]
+        when counts["A"] >= 3
+          ["A",1]
+        when counts["A"] + counts["B"] >= 3
+          ["B",2]
+        when counts["A"] + counts["B"] + counts["C"] >= 3
+          ["C",3]
+        when counts["A"] + counts["B"] + counts["C"] + counts["D"] >= 3
+          ["D",4]
+        when counts["A"] + counts["B"] + counts["C"] + counts["D"] + counts["E"] >= 3
+          ["E",5]
+        when counts["A"] + counts["B"] + counts["C"] + counts["D"] + counts["E"] + counts["F"] >= 3
+          ["F",6]
+        when counts["A"] + counts["B"] + counts["C"] + counts["D"] + counts["E"] + counts["F"] + counts["G"] >= 3
+          ["G",7]
+        else
+          ["Unclassified",10]
+      end
+    end
+    
+    def check_handicap(handicaps, old_hc)
+      new_hc = old_hc
+      if !new_hc.nil?
+        handicaps.compact.each do |handicap|
+          if handicap < new_hc - 1
+            new_hc = (new_hc + handicap) / 2
+          end
+        end
+      end
+      return new_hc
     end
   # End of private.
 end

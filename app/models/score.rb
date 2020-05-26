@@ -17,6 +17,7 @@ class Score < ApplicationRecord
   validate :score_possible?
   validate :valid_rs?
   before_save :score_details
+  after_save :update_user
   validates :image,   content_type: { in: %w[image/jpeg unage/gif image/png],
                                       message: "must be a valid inage format" },
                       size:         { less_than: 5.megabytes,
@@ -139,5 +140,10 @@ class Score < ApplicationRecord
         errors.add(:score, "if round is outdoor imperial hits and score must both be odd or both be even")
       end
     end  
+    
+    # Update the user classification and handicaps
+    def update_user
+      self.user.update_user_stats(self.bowtype, self.indoor)
+    end
   # end of private
 end

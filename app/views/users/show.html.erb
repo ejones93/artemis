@@ -11,13 +11,13 @@
   </section>
   </aside>
   <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
+    <%# render 'follow_form' if logged_in? %>
+    <% if @user.scores.any? %>
+      <h3>Scores (<%= @user.scores.count %>)</h3>
+      <ol class="scores">
+        <%= render @scores %>
       </ol>
-      <%= will_paginate @microposts %>
+      <%= will_paginate @scores %>
     <% end %>
   </div>
 </div>
