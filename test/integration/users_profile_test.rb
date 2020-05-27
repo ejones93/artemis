@@ -6,27 +6,33 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     @user = users(:emlyn)
   end
   
-  test "profile display" do
+  #test "profile display" do
+  #  get user_path(@user)
+  #  assert_template 'users/show'
+  #  assert_select 'title', full_title(@user.name)
+  #  assert_select 'h1', text: @user.name
+  #  assert_match @user.microposts.count.to_s,response.body
+  #  assert_select 'div.pagination', count: 1
+  #  @user.microposts.paginate(page: 1).each do |micropost|
+  #    assert_match micropost.content, response.body
+  #  end
+  #  assert_select 'div.stats'
+  #  assert_match @user.followers.count.to_s,response.body
+  #  assert_match @user.following.count.to_s,response.body
+  #end
+  
+  test "non logged in users cannot see profiles" do
     get user_path(@user)
-    assert_template 'users/show'
-    assert_select 'title', full_title(@user.name)
-    assert_select 'h1', text: @user.name
-    assert_match @user.microposts.count.to_s,response.body
-    assert_select 'div.pagination', count: 1
-    @user.microposts.paginate(page: 1).each do |micropost|
-      assert_match micropost.content, response.body
-    end
-    assert_select 'div.stats'
-    assert_match @user.followers.count.to_s,response.body
-    assert_match @user.following.count.to_s,response.body
+    assert_redirected_to login_path
+    follow_redirect!
+    assert_match "Please log in.", response.body
   end
   
-  test "test profile stats on home page" do
+  test "test user stats on home page" do
     log_in_as(@user)
     get root_path(@user)
     assert_template 'static_pages/home'
     assert_select 'div.stats', count: 1
-    assert_match @user.followers.count.to_s,response.body
-    assert_match @user.following.count.to_s,response.body
+    assert_match @user.scores.count.to_s,response.body
   end
 end
