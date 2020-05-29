@@ -6,6 +6,23 @@
   </section>
   <section class="round_details">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <% if logged_in? %> 
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#roundPersonalBests" aria-expanded="true" aria-controls="roundPersonalBests">
+                <i class="more-less glyphicon gluphicon-plus"></i>
+                Personal Bests
+              </a>
+            </h4>
+          </div>
+          <div id="roundPersonalBests" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+              <%= render 'personal_bests' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
       <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
           <h4 class="panel-title">
@@ -15,7 +32,7 @@
             </a>
           </h4>
         </div>
-        <div id="roundDetails" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div id="roundDetails" class="panel-collapse collapse <% if !logged_in? %>in<% end %>" role="tabpanel" aria-labelledby="headingOne">
           <div class="panel-body">        
             <ul class="list-group">
               <li class="list-group-item">

@@ -1,0 +1,110 @@
+<% @user ||= current_user %>
+<% categories = @user.scores.where(round_id: @round.id).distinct.pluck(:category_id) %>
+<% if categories.blank? %>
+  <p>No personal best</p>
+<% else %>
+  <% categories.each do | category_id | %>
+    <% score = @user.scores.where(round_id: @round.id).where(category_id: category_id).reorder(score: :desc, golds: :desc, xs: :desc, hits: :desc, date: :asc).take %>
+    <% bowtype = score.bowtype %>
+    <% indoor_classes = {"Barebow" => "indoor-barebow", "Compound" => "indoor-compound", "Longbow" => "indoor-longbow", "Recurve" => "indoor-recurve"} %>
+    <% outdoor_classes = {"Barebow" => "outdoor-barebow", "Compound" => "outdoor-compound", "Longbow" => "outdoor-longbow", "Recurve" => "outdoor-recurve"} %>
+    <% case score.round.indoor %>
+      <% when true %>
+        <% category_class = indoor_classes[bowtype] %>
+      <% when false %>
+        <% category_class = outdoor_classes[bowtype] %>
+    <% end %>        
+    <div class="panel panel-default" id="score-<%= score.id %>">
+      <div class="panel-heading <%= category_class %>">
+        <h3 class="panel-title score-title">
+          <%= link_to score.date.to_formatted_s(:uk_short), "#" %> - 
+          <%= link_to score.round do%> 
+            <%= score.round.name %>
+            <% if score.record_status == "ukrs" %>
+              <span class="label label-info">UKRS</span>
+            <% elsif score.record_status == "wrs" %>
+              <span class="label label-warning">WRS</span>
+            <% end %>
+          <% end %>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-6">
+            <strong>Score: </strong><%= score.score.to_s %><br>
+            <strong>Hits: </strong><%= score.hits.to_s %><br>
+            <strong>Golds: </strong><%= score.golds.to_s %><br>
+            <% case
+               when score.round.name == "Worcester" %>
+                <% xs = true %>
+            <% when score.round.indoor == false && score.round.organisation == "World Archery" %>
+                <% xs = true %>
+            <% else %>
+                <% xs = false %>
+            <% end %>
+            <% if xs %>
+              <strong>Xs:</strong><%= score.xs.to_s %><br>
+            <% end %>
+            <strong>Location: </strong><%= score.location %>
+            <% if score.home %>
+              (Home)
+            <% else %>
+              (Away)
+            <% end %>
+          </div>
+          <div class="col-xs-6">
+            <% if score.category.gender == "M" %>
+              <% category = "Gent" %>
+            <% elsif score.category.gender == "F" %>
+              <% category = "Lady" %>
+            <% end %>
+            <% case 
+               when score.category.age < 12 %>
+              <% category.insert(0, "Junior ") %>
+              <% category += " < 12" %>
+            <% when score.category.age < 14 %>
+              <% category.insert(0, "Junior ") %>
+              <% category += " < 14" %>
+            <% when score.category.age < 16 %>
+              <% category.insert(0, "Junior ") %>
+              <% category += " < 16" %>
+            <% when score.category.age < 18 %>
+              <% category.insert(0, "Junior ") %>
+              <% category += " < 18" %>
+            <% when score.category.age >= 18 %>
+              <% category.insert(0, "Senior ") %>
+            <% end %>
+            <strong>Category: </strong><%= category %><br>
+            <strong>Bowtype: </strong><%= bowtype %><br>
+            <% if !score.classification.blank? %>
+              <strong>Class: </strong><%= score.classification %><br>
+            <% end %>
+            <% if !score.handicap.blank? %>
+              <strong>Handicap: </strong><%= score.handicap.to_s %>
+            <% end %>
+          </div>
+        </div>
+        <% if !score.comment.blank? %> 
+          <div class="row">
+            <div class="col-xs-12">
+              <strong>Comment:</strong>
+              <div class="well well-sm"><%= score.comment %></div>
+            </div>
+          </div>
+        <% end %>
+        <%= image_tag score.image, class: 'score-image' if score.image.attached? %>
+      </div>
+      <div class="panel-footer">
+        Submitted <%= time_ago_in_words(score.created_at) %> ago.
+        <% case score.validated
+           when true %>
+           <span class="label label-success">Validated</span>
+           <% when false %>
+           <span class="label label-danger">Rejected</span>
+           <% when nil %>
+           <span class="label label-default">Processing</span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

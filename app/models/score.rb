@@ -88,6 +88,13 @@ class Score < ApplicationRecord
     def score_details    
       self.indoor = self.round.indoor
       self.name = self.user.name
+
+      if self.location == "Gravesend Grammar School" || self.location == "Longfield Academy"
+        self.home = true
+      else
+        self.home = false
+      end
+        
       if self.indoor
         # Get bowtype specific round (if it exists)
         if self.bowtype != "Compound"
@@ -101,6 +108,7 @@ class Score < ApplicationRecord
           self.round_id = round.id
         end
       end
+
       self.handicap = self.round.handicap(self.score)
       self.classification = self.category.classification(self.handicap, self.round.indoor, self.record_status)
     end

@@ -11,7 +11,7 @@
   <% golds ||= '' %>
   <% xs ||= '' %>
   <% bowtype ||= @user.default_bowtype %>
-  <% round ||= '' %>
+  <% round ||= 'Select Round' %>
   
   <div class="input-group">
     <span class="input-group-addon" id="date">Date</span>
@@ -20,8 +20,16 @@
   
   <div class="input-group">
     <span class="input-group-addon" id="round">Round</span>
-    <% rounds = Round.distinct.pluck(:name, :id).uniq { |round| round.first } %>
-    <%= f.select :round_id, rounds, {prompt: "Select Round", selected: round, disabled: ''}, class: "form-control" %>
+    <% rounds = [["Select Round"],["Outdoor Metric"]] %>
+    <% rounds.concat(Round.where(indoor: false).where(organisation: "World Archery").distinct.pluck(:name, :id).uniq { |round| round.first }) %>
+    <% rounds.push("Outdoor Imperial") %>
+    <% rounds.concat(Round.where(indoor: false).where(organisation: "Archery GB").distinct.pluck(:name, :id).uniq { |round| round.first }) %>
+    <% rounds.push("Indoor Metric") %>
+    <% rounds.concat(Round.where(indoor: true).where(organisation: "World Archery").distinct.pluck(:name, :id).uniq { |round| round.first }) %>
+    <% rounds.push("Indoor Imperial") %>
+    <% rounds.concat(Round.where(indoor: true).where(organisation: "Archery GB").distinct.pluck(:name, :id).uniq { |round| round.first }) %>
+    
+    <%= f.select :round_id, rounds, {selected: round, disabled: ['Select Round','Outdoor Metric','Outdoor Imperial','Indoor Metric','Indoor Imperial',]}, class: "form-control" %>
   </div>
   
   <div class="input-group">
@@ -94,6 +102,35 @@
     if (size_in_megabytes > 5) {
       alert("Maximum file size is 5MB. Please choose a smaller file.");
       $("#score_image").val("");
+    }
+  });
+  
+  var xs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 90];
+  var tens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89]
+  var fives = [90]
+  var indoor = [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90]
+  var outdoor = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+
+  $('#score_round_id').change(function(){
+    var newRound = parseInt($(this).val());
+    if (xs.includes(newRound)) { 
+      $('#xs').show();
+    } else {
+      $('#xs').hide();
+    }
+    if (tens.includes(newRound)){
+      document.getElementById("golds").textContent = "Tens";
+    } else if (fives.includes(newRound)){
+      document.getElementById("golds").textContent = "Fives";
+    } else {
+      document.getElementById("golds").textContent = "Golds";
+    }
+    if (indoor.includes(newRound)){
+      document.getElementById("score_location").value = "Longfield Academy"
+    } else if (outdoor.includes(newRound)){
+      document.getElementById("score_location").value = "Gravesend Grammar School"
+    } else {
+      document.getElementById("score_location").value = ""
     }
   });
 </script>

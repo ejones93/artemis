@@ -8,7 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
-require("gold")
 require("chartkick")
 require("chart.js")
 import "bootstrap"

@@ -39,7 +39,13 @@
             <% xs = false %>
         <% end %>
         <% if xs %>
-          <strong>Xs:</strong><%= score.xs.to_s %>
+          <strong>Xs:</strong><%= score.xs.to_s %><br>
+        <% end %>
+        <strong>Location: </strong><%= score.location %>
+        <% if score.home %>
+          (Home)
+        <% else %>
+          (Away)
         <% end %>
       </div>
       <div class="col-xs-6">
